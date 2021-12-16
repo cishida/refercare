@@ -27,9 +27,6 @@ class NavItem extends StatelessWidget {
             : Colors.transparent,
         // width: 172.0,
         height: 38.0,
-        margin: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-        ),
         child: Row(
           children: [
             Padding(
@@ -37,7 +34,8 @@ class NavItem extends StatelessWidget {
               child: Image.asset(
                 'assets/images/nav/${title.toLowerCase()}-icon.png',
                 width: 14.0,
-                color: highlighted ? ConstColors.primary : Colors.transparent,
+                color: highlighted ? ConstColors.primary : ConstColors.navGray,
+                filterQuality: FilterQuality.high,
               ),
             ),
             Text(
@@ -45,7 +43,7 @@ class NavItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14.0,
                 fontWeight: highlighted ? FontWeight.w700 : FontWeight.w600,
-                color: highlighted ? Colors.black : ConstColors.gray,
+                color: highlighted ? Colors.black : ConstColors.navGray,
               ),
             ),
           ],

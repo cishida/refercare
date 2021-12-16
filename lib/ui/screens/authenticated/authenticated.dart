@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:refercare/theme.dart';
 import 'package:refercare/ui/screens/authenticated/components/authenticated_header.dart';
 import 'package:refercare/ui/screens/authenticated/nav_column/nav_column.dart';
 

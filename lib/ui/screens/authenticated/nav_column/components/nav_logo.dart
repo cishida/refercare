@@ -9,35 +9,23 @@ class NavLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: Values.homeHeaderHeight,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(
-              top: 14.0,
-            ),
-            child: Text(
-              'ReferCare',
-              style: TextStyle(
-                color: ConstColors.offBlack,
-                fontSize: 24.0,
-                fontWeight: FontWeight.w700,
-                letterSpacing: -.25,
-                fontFamily: 'SourceSerifPro',
-              ),
-            ),
+      child: Padding(
+        padding: EdgeInsets.only(
+          top: 14.0,
+          left: 13.0,
+        ),
+        child: Text(
+          'ReferCare',
+          style: TextStyle(
+            color: ConstColors.offBlack,
+            fontSize: 24.0,
+            fontWeight: FontWeight.w700,
+            letterSpacing: -.25,
+            fontFamily: 'SourceSerifPro',
           ),
-          Container(
-            color: ConstColors.divider,
-            height: 1.0,
-            width: 160.0,
-            margin: const EdgeInsets.only(
-              left: 20.0,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
