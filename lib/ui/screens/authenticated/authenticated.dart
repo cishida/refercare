@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:refercare/ui/screens/authenticated/nav/nav_widget.dart';
+import 'package:refercare/ui/screens/authenticated/nav/nav_column.dart';
 
 class Authenticated extends StatelessWidget {
   const Authenticated({
@@ -14,10 +14,10 @@ class Authenticated extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          const NavWidget(),
+          const NavColumn(),
           Expanded(
             child: Container(
-              color: Colors.red,
+              color: Colors.blueGrey,
               child: child,
             ),
           ),

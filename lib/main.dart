@@ -2,21 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:refercare/core/models/user_profile/user_profile.dart';
+import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/core/services/auth/firebase_auth_service.dart';
 import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
-import 'package:refercare/ui/screens/auth/login_screen/login_screen.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
-import 'package:refercare/ui/screens/authenticated/files/files_screen.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
-import 'package:refercare/ui/screens/authenticated/messages/messages_screen.dart';
-import 'package:refercare/ui/screens/authenticated/opportunities/opportunities_screen.dart';
-import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
-import 'package:refercare/ui/screens/authenticated/search/search_screen.dart';
-import 'package:refercare/ui/screens/authenticated/settings/settings_screen.dart';
 import 'package:refercare/ui/screens/landing_screen/header/landing_screen_header.dart';
-import 'package:refercare/ui/screens/landing_screen/landing_screen.dart';
 import 'package:vrouter/vrouter.dart';
 
 Future<void> main() async {
@@ -29,6 +21,28 @@ class ReferCare extends StatelessWidget {
   ReferCare({Key? key}) : super(key: key);
 
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  List<VWidget> _buildNavWidgets() {
+    final List<VWidget> widgets = [];
+
+    widgets.add(
+      VWidget(
+        path: null,
+        widget: const HomeScreen(),
+      ),
+    );
+
+    Values.navWidgets.forEach((key, value) {
+      widgets.add(
+        VWidget(
+          path: key.toLowerCase(),
+          widget: value,
+        ),
+      );
+    });
+
+    return widgets;
+  }
 
   // This widget is the root of your application.
   @override
@@ -78,36 +92,7 @@ class ReferCare extends StatelessWidget {
                           widgetBuilder: (child) => Authenticated(
                             child: child,
                           ), // Child is the widget from nestedRoutes
-                          nestedRoutes: [
-                            VWidget(
-                              path: null,
-                              widget: const HomeScreen(),
-                            ), // null path matches parent
-                            VWidget(
-                              path: 'search',
-                              widget: const SearchScreen(),
-                            ),
-                            VWidget(
-                              path: 'messages',
-                              widget: const MessagesScreen(),
-                            ),
-                            VWidget(
-                              path: 'profile',
-                              widget: const ProfileScreen(),
-                            ),
-                            VWidget(
-                              path: 'files',
-                              widget: const FilesScreen(),
-                            ),
-                            VWidget(
-                              path: 'opportunities',
-                              widget: const OpportunitiesScreen(),
-                            ),
-                            VWidget(
-                              path: 'settings',
-                              widget: const SettingsScreen(),
-                            ),
-                          ],
+                          nestedRoutes: _buildNavWidgets(),
                         ),
                         // VWidget(
                         //   path: '/home',

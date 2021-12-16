@@ -15,6 +15,7 @@ class NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print(routeName);
         context.vRouter.to(routeName);
       },
       child: Text(title),
