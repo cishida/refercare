@@ -13,27 +13,24 @@ class Authenticated extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: theme(),
-      home: Scaffold(
-        body: Row(
-          children: [
-            const NavColumn(),
-            Expanded(
-              child: Column(
-                children: [
-                  const AuthenticatedHeader(),
-                  Expanded(
-                    child: Container(
-                      color: Colors.white,
-                      child: child,
-                    ),
+    return Scaffold(
+      body: Row(
+        children: [
+          const NavColumn(),
+          Expanded(
+            child: Column(
+              children: [
+                const AuthenticatedHeader(),
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: child,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

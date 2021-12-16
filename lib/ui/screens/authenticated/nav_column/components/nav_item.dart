@@ -35,9 +35,8 @@ class NavItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14.0),
               child: Image.asset(
-                'assets/images/nav/home-icon.png',
+                'assets/images/nav/${title.toLowerCase()}-icon.png',
                 width: 14.0,
-                height: 13.0,
                 color: highlighted ? ConstColors.primary : Colors.transparent,
               ),
             ),

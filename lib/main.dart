@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/core/services/auth/firebase_auth_service.dart';
+import 'package:refercare/theme.dart';
 import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
@@ -13,7 +14,9 @@ import 'package:vrouter/vrouter.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-  runApp(ReferCare());
+  runApp(
+    ReferCare(),
+  );
 }
 
 class ReferCare extends StatelessWidget {
@@ -74,6 +77,7 @@ class ReferCare extends StatelessWidget {
                 AsyncSnapshot<User?> userSnapshot,
               ) {
                 return VRouter(
+                  theme: theme(),
                   mode: VRouterMode.history,
                   buildTransition: (animation1, _, child) {
                     return FadeTransition(opacity: animation1, child: child);
