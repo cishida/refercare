@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/ui/screens/authenticated/home/components/donut_chart.dart';
 import 'package:refercare/ui/screens/authenticated/home/components/home_action_chip_row.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/home_feed/home_feed.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -16,11 +17,14 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                HomeActionChipRow(),
-                Divider(
+              children: [
+                const HomeActionChipRow(),
+                const Divider(
                   height: 1.0,
                   color: ConstColors.divider,
+                ),
+                Expanded(
+                  child: HomeFeed(),
                 ),
               ],
             ),
