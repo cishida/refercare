@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:refercare/ui/screens/authenticated/authenticated.dart';
-import 'package:refercare/ui/screens/landing_screen/landing_screen.dart';
-import 'package:refercare/ui/screens/unauthenticated/unauthenticated.dart';
 import 'package:vrouter/vrouter.dart';
 
 class AuthWidget extends StatefulWidget {

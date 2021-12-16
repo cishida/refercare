@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:refercare/ui/screens/authenticated/nav/nav_column.dart';
+import 'package:refercare/ui/screens/authenticated/components/authenticated_header.dart';
+import 'package:refercare/ui/screens/authenticated/nav_column/nav_column.dart';
 
 class Authenticated extends StatelessWidget {
   const Authenticated({
@@ -16,9 +17,16 @@ class Authenticated extends StatelessWidget {
         children: [
           const NavColumn(),
           Expanded(
-            child: Container(
-              color: Colors.blueGrey,
-              child: child,
+            child: Column(
+              children: [
+                const AuthenticatedHeader(),
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: child,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

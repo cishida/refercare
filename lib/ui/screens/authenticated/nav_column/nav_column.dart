@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_values.dart';
-import 'package:refercare/ui/screens/authenticated/nav/nav_item.dart';
-import 'package:refercare/ui/screens/authenticated/nav/nav_logo.dart';
+import 'package:refercare/ui/screens/authenticated/nav_column/components/nav_item.dart';
+import 'package:refercare/ui/screens/authenticated/nav_column/components/nav_logo.dart';
 
 class NavColumn extends StatelessWidget {
   const NavColumn({
@@ -27,7 +27,7 @@ class NavColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 200.0,
-      color: Colors.white,
+      color: Colors.blueGrey,
       child: Column(
         children: [
           const NavLogo(),

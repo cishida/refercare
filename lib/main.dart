@@ -8,7 +8,6 @@ import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
-import 'package:refercare/ui/screens/landing_screen/header/landing_screen_header.dart';
 import 'package:vrouter/vrouter.dart';
 
 Future<void> main() async {
@@ -53,7 +52,7 @@ class ReferCare extends StatelessWidget {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          print('Initialization error with firebase');
+          debugPrint('Initialization error with firebase');
         }
 
         // Once complete, show your application
@@ -264,80 +263,80 @@ class ReferCare extends StatelessWidget {
   // }
 }
 
-abstract class BaseWidget extends StatelessWidget {
-  const BaseWidget({
-    Key? key,
-  }) : super(key: key);
+// abstract class BaseWidget extends StatelessWidget {
+//   const BaseWidget({
+//     Key? key,
+//   }) : super(key: key);
 
-  String get title;
-  String get buttonText;
-  String get to;
+//   String get title;
+//   String get buttonText;
+//   String get to;
 
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        children: [
-          const LandingScreenHeader(),
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(title),
-                const SizedBox(height: 50),
-                ElevatedButton(
-                  onPressed: () => context.vRouter.to(to),
-                  child: Text(buttonText),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Material(
+//       child: Column(
+//         children: [
+//           // const LandingScreenHeader(),
+//           Center(
+//             child: Column(
+//               mainAxisSize: MainAxisSize.min,
+//               children: [
+//                 Text(title),
+//                 const SizedBox(height: 50),
+//                 ElevatedButton(
+//                   onPressed: () => context.vRouter.to(to),
+//                   child: Text(buttonText),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-class HowItWorksScreen extends BaseWidget {
-  const HowItWorksScreen({Key? key}) : super(key: key);
+// class HowItWorksScreen extends BaseWidget {
+//   const HowItWorksScreen({Key? key}) : super(key: key);
 
-  @override
-  String get title => 'How It Works';
-  @override
-  String get buttonText => 'Landing';
-  @override
-  String get to => '/';
-}
+//   @override
+//   String get title => 'How It Works';
+//   @override
+//   String get buttonText => 'Landing';
+//   @override
+//   String get to => '/';
+// }
 
-class VideosScreen extends BaseWidget {
-  const VideosScreen({Key? key}) : super(key: key);
+// class VideosScreen extends BaseWidget {
+//   const VideosScreen({Key? key}) : super(key: key);
 
-  @override
-  String get title => 'Videos';
-  @override
-  String get buttonText => 'Landing';
-  @override
-  String get to => '/';
-}
+//   @override
+//   String get title => 'Videos';
+//   @override
+//   String get buttonText => 'Landing';
+//   @override
+//   String get to => '/';
+// }
 
-class IntegrationsScreen extends BaseWidget {
-  const IntegrationsScreen({Key? key}) : super(key: key);
+// class IntegrationsScreen extends BaseWidget {
+//   const IntegrationsScreen({Key? key}) : super(key: key);
 
-  @override
-  String get title => 'Integrations';
-  @override
-  String get buttonText => 'Landing';
-  @override
-  String get to => '/';
-}
+//   @override
+//   String get title => 'Integrations';
+//   @override
+//   String get buttonText => 'Landing';
+//   @override
+//   String get to => '/';
+// }
 
-class PricingScreen extends BaseWidget {
-  const PricingScreen({Key? key}) : super(key: key);
+// class PricingScreen extends BaseWidget {
+//   const PricingScreen({Key? key}) : super(key: key);
 
-  @override
-  String get title => 'Pricing';
-  @override
-  String get buttonText => 'Landing';
-  @override
-  String get to => '/';
-}
+//   @override
+//   String get title => 'Pricing';
+//   @override
+//   String get buttonText => 'Landing';
+//   @override
+//   String get to => '/';
+// }
