@@ -32,7 +32,6 @@ class NavColumn extends StatelessWidget {
       margin: const EdgeInsets.symmetric(
         horizontal: 20.0,
       ),
-      color: ConstColors.offWhite,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,42 +40,17 @@ class NavColumn extends StatelessWidget {
             height: 1.0,
             color: ConstColors.divider,
           ),
-          const SizedBox(
-            height: 12.0,
-          ),
-          Column(
-            children: _buildNavItems(),
-          ),
-          const SizedBox(
-            height: 12.0,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: Column(
+              children: _buildNavItems(),
+            ),
           ),
           const Divider(
             height: 1.0,
             color: ConstColors.divider,
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 27.0,
-              left: 9.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Have questions?',
-                  style: TextStyle(
-                    color: ConstColors.textGray,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(
-                  height: 11.0,
-                ),
-                GetHelpWidget(),
-              ],
-            ),
-          ),
+          const GetHelpWidget(),
         ],
       ),
     );

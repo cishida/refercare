@@ -19,27 +19,58 @@ class AuthenticatedHeader extends StatelessWidget {
             height: 1.0,
             color: Colors.white,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Your Dental Network'),
-              Row(
-                children: [
-                  Container(
-                    height: 30,
-                    width: 30,
-                    color: Colors.blueGrey,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('Dentist Name'),
-                      Text('Org Name'),
-                    ],
-                  )
-                ],
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Your Dental Network',
+                      style: TextStyle(
+                        color: ConstColors.textBlueGray,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      'For your safety, your network is HIPAA-compliant.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(.4),
+                        fontSize: 12.0,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/empty-user-photo.png',
+                      width: 32.0,
+                      color: ConstColors.divider,
+                      filterQuality: FilterQuality.high,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 12.0,
+                        right: 15.0,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text('Dr. Mohamed Saber'),
+                          Text('Brentwood Endodontics'),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
           const Divider(
             height: 1.0,

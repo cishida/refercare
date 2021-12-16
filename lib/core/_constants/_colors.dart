@@ -7,6 +7,7 @@ class ConstColors {
 
   static const Color navGray = Color(0xFF616E80);
   static const Color textGray = Color(0xFF51525A);
+  static const Color textBlueGray = Color(0xFF3C5072);
 
   static const Color offBlack = Color(0xFF101010);
   static const Color divider = Color(0xFFD7DBE4);
