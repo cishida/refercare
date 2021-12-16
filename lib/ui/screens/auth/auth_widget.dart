@@ -19,7 +19,7 @@ class _AuthWidgetState extends State<AuthWidget> {
       return;
     }
 
-    context.vRouter.to('/authenticated');
+    context.vRouter.to('/authenticated/home');
 
     // if (widget.userSnapshot.connectionState == ConnectionState.active &&
     //     widget.userSnapshot.hasData &&

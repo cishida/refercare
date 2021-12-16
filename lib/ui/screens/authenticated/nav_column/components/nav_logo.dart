@@ -25,6 +25,7 @@ class NavLogo extends StatelessWidget {
                 fontSize: 24.0,
                 fontWeight: FontWeight.w700,
                 letterSpacing: -.25,
+                fontFamily: 'SourceSerifPro',
               ),
             ),
           ),
@@ -32,6 +33,9 @@ class NavLogo extends StatelessWidget {
             color: ConstColors.divider,
             height: 1.0,
             width: 160.0,
+            margin: const EdgeInsets.only(
+              left: 20.0,
+            ),
           ),
         ],
       ),

@@ -154,6 +154,11 @@ class ReferCare extends StatelessWidget {
                         // VRouteRedirector(path: ':_(.+)', redirectTo: '/home')
                       ],
                     ),
+                    // .+ is a regexp to match any path
+                    VRouteRedirector(
+                      path: ':_(.+)',
+                      redirectTo: '/authenticated',
+                    ),
                   ],
                 );
                 // return MaterialApp(

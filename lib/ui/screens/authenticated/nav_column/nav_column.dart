@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/ui/screens/authenticated/nav_column/components/nav_item.dart';
 import 'package:refercare/ui/screens/authenticated/nav_column/components/nav_logo.dart';
@@ -27,10 +28,14 @@ class NavColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 200.0,
-      color: Colors.blueGrey,
+      color: ConstColors.offWhite,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const NavLogo(),
+          const SizedBox(
+            height: 12.0,
+          ),
           Column(
             children: _buildNavItems(),
           ),

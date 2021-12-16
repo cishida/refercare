@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:refercare/core/_constants/_colors.dart';
 import 'package:vrouter/vrouter.dart';
 
 class NavItem extends StatelessWidget {
@@ -13,12 +14,44 @@ class NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool highlighted = context.vRouter.path == routeName ||
+        context.vRouter.path == '/' && routeName == '/authenticated/home';
+
     return GestureDetector(
       onTap: () {
-        debugPrint(routeName);
         context.vRouter.to(routeName);
       },
-      child: Text(title),
+      child: Container(
+        color: highlighted
+            ? ConstColors.primary.withOpacity(.1)
+            : Colors.transparent,
+        // width: 172.0,
+        height: 38.0,
+        margin: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+        ),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14.0),
+              child: Image.asset(
+                'assets/images/nav/home-icon.png',
+                width: 14.0,
+                height: 13.0,
+                color: highlighted ? ConstColors.primary : Colors.transparent,
+              ),
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 14.0,
+                fontWeight: highlighted ? FontWeight.w700 : FontWeight.w600,
+                color: highlighted ? Colors.black : ConstColors.gray,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
