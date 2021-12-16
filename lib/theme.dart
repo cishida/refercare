@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 
 ThemeData theme() {
-  final BorderRadius borderRadius = BorderRadius.circular(36);
+  // final BorderRadius borderRadius = BorderRadius.circular(36);
 
   return ThemeData(
     primaryColor: ConstColors.primary,

@@ -162,7 +162,7 @@ class HomeFeedItem extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Text(
+                        const Text(
                           '*Confirm for HIPAA-compliant messaging, file-sharing, and referrals.',
                           style: TextStyle(
                             fontSize: 12.0,
