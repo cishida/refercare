@@ -82,7 +82,7 @@ class ReferCare extends StatelessWidget {
                   buildTransition: (animation1, _, child) {
                     return FadeTransition(opacity: animation1, child: child);
                   },
-                  transitionDuration: const Duration(milliseconds: 100),
+                  transitionDuration: const Duration(milliseconds: 50),
                   routes: [
                     VWidget(
                       path: '/',

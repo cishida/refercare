@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
-import 'package:refercare/ui/screens/authenticated/home/components/donut_chart.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/dental_connections/dental_connections.dart';
 import 'package:refercare/ui/screens/authenticated/home/components/home_action_chip_row.dart';
 import 'package:refercare/ui/screens/authenticated/home/components/home_feed/home_feed.dart';
 
@@ -33,10 +33,7 @@ class HomeScreen extends StatelessWidget {
             width: 1.0,
             color: ConstColors.divider,
           ),
-          const SizedBox(
-            width: 388.0,
-            child: DonutChart(),
-          ),
+          const DentalConnections(),
         ],
       ),
     );
