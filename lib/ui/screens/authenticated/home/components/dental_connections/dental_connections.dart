@@ -50,14 +50,14 @@ class _DentalConnectionsState extends State<DentalConnections> {
       width: 388.0,
       child: Column(
         children: [
-          const SizedBox(
-            height: 27.0,
-          ),
-          DonutChart(
-            dataMap: dataMap,
-          ),
-          const SizedBox(
-            height: 33.0,
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 27.0,
+              bottom: 33.0,
+            ),
+            child: DonutChart(
+              dataMap: dataMap,
+            ),
           ),
           const Divider(
             height: 1.0,
