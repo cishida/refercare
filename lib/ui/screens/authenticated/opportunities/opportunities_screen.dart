@@ -5,6 +5,14 @@ class OpportunitiesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Opportunities');
+    return const Padding(
+      padding: EdgeInsets.all(20),
+      child: Text(
+        'Opportunities',
+        style: TextStyle(
+          fontSize: 24.0,
+        ),
+      ),
+    );
   }
 }

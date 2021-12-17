@@ -5,6 +5,14 @@ class FilesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Files');
+    return const Padding(
+      padding: EdgeInsets.all(20),
+      child: Text(
+        'Files',
+        style: TextStyle(
+          fontSize: 24.0,
+        ),
+      ),
+    );
   }
 }

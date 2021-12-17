@@ -5,6 +5,14 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Settings');
+    return const Padding(
+      padding: EdgeInsets.all(20),
+      child: Text(
+        'Settings',
+        style: TextStyle(
+          fontSize: 24.0,
+        ),
+      ),
+    );
   }
 }
