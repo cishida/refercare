@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
+import 'package:refercare/ui/screens/authenticated/messages/components/chat/chat_view.dart';
 import 'package:refercare/ui/screens/authenticated/messages/components/conversations_view.dart';
 import 'package:refercare/ui/screens/authenticated/messages/components/messages_action_chip_row.dart';
-import 'package:refercare/ui/screens/authenticated/messages/components/messages_view.dart';
 
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class MessagesScreen extends StatelessWidget {
             color: ConstColors.divider,
           ),
           const Expanded(
-            child: MessagesView(),
+            child: ChatView(),
           ),
         ],
       ),

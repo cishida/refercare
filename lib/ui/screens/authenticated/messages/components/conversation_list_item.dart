@@ -68,7 +68,7 @@ class ConversationListItem extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '"${_item.message!}"',
+                        '"${_item.message}"',
                         style: TextStyle(
                           fontSize: 13.0,
                           fontWeight: FontWeight.w400,
