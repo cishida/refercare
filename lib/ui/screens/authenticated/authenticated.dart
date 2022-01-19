@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/ui/screens/authenticated/components/authenticated_header.dart';
-import 'package:refercare/ui/screens/authenticated/nav_column/nav_column.dart';
+import 'package:refercare/ui/screens/authenticated/nav_row/nav_row.dart';
 
 class Authenticated extends StatelessWidget {
   const Authenticated({
@@ -13,13 +13,13 @@ class Authenticated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
         children: [
-          const NavColumn(),
           Expanded(
             child: Column(
               children: [
                 const AuthenticatedHeader(),
+                const NavRow(),
                 Expanded(
                   child: Container(
                     color: Colors.white,

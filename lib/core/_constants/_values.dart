@@ -11,10 +11,9 @@ class Values {
   // UI
   static const double homeHeaderHeight = 55.0;
   static const Map<String, Widget> navWidgets = {
-    'Home': HomeScreen(),
-    // 'Search': SearchScreen(),
-    'Messages': MessagesScreen(),
     'Profile': ProfileScreen(),
+    'Network': HomeScreen(),
+    'Messages': MessagesScreen(),
     'Files': FilesScreen(),
     'Opportunities': OpportunitiesScreen(),
     'Settings': SettingsScreen(),

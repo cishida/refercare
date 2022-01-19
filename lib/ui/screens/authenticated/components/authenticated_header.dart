@@ -11,7 +11,7 @@ class AuthenticatedHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: Values.homeHeaderHeight,
-      color: Colors.white,
+      color: ConstColors.lightGreen,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,26 +26,6 @@ class AuthenticatedHeader extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Your Dental Network',
-                      style: TextStyle(
-                        color: ConstColors.textBlueGray,
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'For your safety, your network is HIPAA-compliant.',
-                      style: TextStyle(
-                        color: Colors.black.withOpacity(.4),
-                        fontSize: 12.0,
-                      ),
-                    ),
-                  ],
-                ),
                 Row(
                   children: [
                     Image.asset(
@@ -67,6 +47,61 @@ class AuthenticatedHeader extends StatelessWidget {
                         ],
                       ),
                     )
+                  ],
+                ),
+                SizedBox(
+                  width: 380.0,
+                  height: 32.0,
+                  child: TextField(
+                    textAlign: TextAlign.left,
+                    // controller: searchCtrl,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      height: 1.0,
+                    ),
+                    cursorColor: ConstColors.highlightGreen,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      hintStyle: const TextStyle(
+                        fontSize: 14,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        // ignore: use_named_constants
+                        borderSide: const BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      filled: true,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 6.0,
+                      ),
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Your Dental Network',
+                      style: TextStyle(
+                        color: ConstColors.textBlueGray,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Text(
+                      'For your safety, your network is HIPAA-compliant.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(.4),
+                        fontSize: 12.0,
+                      ),
+                    ),
                   ],
                 ),
               ],
