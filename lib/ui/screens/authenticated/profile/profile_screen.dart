@@ -17,6 +17,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     'Specialties',
     'Previous Roles',
   ];
+
   final List<Map<String, String>> _profileItems = [
     {
       'title': 'FULL NAME',
@@ -219,8 +220,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final BoxDecoration shadowDecoration = BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(10),
+      borderRadius: const BorderRadius.only(
+        topLeft: const Radius.circular(10),
         topRight: Radius.circular(10),
         // bottomLeft: Radius.circular(10),
         // bottomRight: Radius.circular(10),
@@ -230,7 +231,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.grey.withOpacity(0.5),
           spreadRadius: 5,
           blurRadius: 7,
-          offset: Offset(
+          offset: const Offset(
             0,
             2,
           ), // changes position of shadow
@@ -363,13 +364,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          OnboardingStepHeader(
+                          const OnboardingStepHeader(
                             title: 'PROFILE',
                             subtitle: 'Complete your profile',
-                            titleColor: Color(0xFF1443E8),
-                            titleBackgroundColor: Color(0xFF99E7FC),
+                            titleColor: const Color(0xFF1443E8),
+                            titleBackgroundColor: const Color(0xFF99E7FC),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 23.0,
                           ),
                           Container(
@@ -382,13 +383,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          OnboardingStepHeader(
+                          const OnboardingStepHeader(
                             title: 'NETWORK',
                             subtitle: 'Connect with your colleagues',
                             titleColor: Color(0xFF6E31EF),
-                            titleBackgroundColor: Color(0xFFE7DBFC),
+                            titleBackgroundColor: const Color(0xFFE7DBFC),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 23.0,
                           ),
                           Container(
@@ -401,13 +402,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          OnboardingStepHeader(
+                          const OnboardingStepHeader(
                             title: 'PERFORMANCE',
                             subtitle: 'Measure outcomes & compensation',
                             titleColor: Color(0xFF2653C7),
                             titleBackgroundColor: Color(0xFFB3D9FC),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 23.0,
                           ),
                           Container(
@@ -420,13 +421,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          OnboardingStepHeader(
+                          const OnboardingStepHeader(
                             title: 'MESSAGES',
                             subtitle: 'Send secure messages',
                             titleColor: Color(0xFF428124),
                             titleBackgroundColor: Color(0xFFCCF0E8),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 23.0,
                           ),
                           Container(

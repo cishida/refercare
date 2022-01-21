@@ -67,20 +67,20 @@ class _DonutChartState extends State<DonutChart> {
                 ),
               ),
               const Text(
-                'Dental Connections',
+                'Connections',
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w700,
                   color: ConstColors.textBlueGray,
                 ),
               ),
-              Text(
-                '${Random().nextInt(20) + 70}th percentile',
-                style: TextStyle(
-                  fontSize: 13.0,
-                  color: ConstColors.textBlueGray.withOpacity(.6),
-                ),
-              ),
+              // Text(
+              //   '${Random().nextInt(20) + 70}th percentile',
+              //   style: TextStyle(
+              //     fontSize: 13.0,
+              //     color: ConstColors.textBlueGray.withOpacity(.6),
+              //   ),
+              // ),
             ],
           ),
         ),
