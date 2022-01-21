@@ -13,24 +13,38 @@ class Authenticated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
+      body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
             child: Column(
-              children: [
+              children: <Widget>[
                 const AuthenticatedHeader(),
                 const NavRow(),
                 Expanded(
-                  child: Container(
-                    color: Colors.white,
-                    child: child,
-                  ),
+                  child: child,
                 ),
+                // const Text('Footer'),
               ],
             ),
           ),
         ],
       ),
+
+      // Expanded(
+      //   child: SingleChildScrollView(
+      //     child: Column(
+      //       children: [
+      //         const AuthenticatedHeader(),
+      //         const NavRow(),
+      //         Container(
+      //           color: Colors.white,
+      //           child: child,
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

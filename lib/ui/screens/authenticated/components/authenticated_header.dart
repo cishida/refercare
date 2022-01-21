@@ -29,9 +29,9 @@ class AuthenticatedHeader extends StatelessWidget {
                 Row(
                   children: [
                     Image.asset(
-                      'assets/images/empty-user-photo.png',
+                      'assets/images/profile/saber-profile.png',
                       width: 32.0,
-                      color: ConstColors.divider,
+                      // color: ConstColors.divider,
                       filterQuality: FilterQuality.high,
                     ),
                     Padding(
