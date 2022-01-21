@@ -10,6 +10,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String _selectedNavItem = 'Background';
+
   final List<String> _navItems = [
     'Background',
     'Productivity',
@@ -60,54 +62,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     for (final element in _recommendedProfiles) {
       widgets.add(
-        IntrinsicHeight(
-          child: Row(
-            children: [
-              const VerticalDivider(
-                width: 1.0,
-                color: ConstColors.divider,
-              ),
-              const SizedBox(
-                width: 20.0,
-                height: 64.0,
-              ),
-              Image.asset(
-                'assets/images/empty-user-photo.png',
-                width: 42.0,
-                color: ConstColors.divider,
-                filterQuality: FilterQuality.high,
-              ),
-              const SizedBox(
-                width: 12.0,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              showDialog<void>(
+                context: context,
+                builder: (context) => const AlertDialog(
+                  content: Text('Recommended profile clicked'),
+                ),
+              );
+            },
+            child: IntrinsicHeight(
+              child: Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 12.0,
-                      bottom: 2.0,
-                    ),
-                    child: Text(
-                      element['name']!,
-                      style: TextStyle(
-                        color: Colors.black.withOpacity(.7),
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                  const VerticalDivider(
+                    width: 1.0,
+                    color: ConstColors.divider,
                   ),
-                  Text(
-                    element['workplace']!,
-                    style: TextStyle(
-                      color: Colors.black.withOpacity(.7),
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  const SizedBox(
+                    width: 20.0,
+                    height: 64.0,
+                  ),
+                  Image.asset(
+                    'assets/images/empty-user-photo.png',
+                    width: 42.0,
+                    color: ConstColors.divider,
+                    filterQuality: FilterQuality.high,
+                  ),
+                  const SizedBox(
+                    width: 12.0,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 12.0,
+                          bottom: 2.0,
+                        ),
+                        child: Text(
+                          element['name']!,
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(.7),
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        element['workplace']!,
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(.7),
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       );
@@ -187,27 +203,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     for (var i = 0; i < _navItems.length; i++) {
       widgets.add(
-        IntrinsicHeight(
-          child: Row(
-            children: [
-              const VerticalDivider(
-                width: 1.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  // top: 4.0,
-                  bottom: i == _navItems.length - 1 ? 4.0 : 14.0,
-                  left: 14.0,
-                ),
-                child: Text(
-                  _navItems[i],
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    color: ConstColors.textGreen,
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              if (mounted) {
+                setState(() {
+                  _selectedNavItem = _navItems[i];
+                });
+              }
+            },
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  const VerticalDivider(
+                    width: 1.0,
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: i == _navItems.length - 1 ? 4.0 : 14.0,
+                    ),
+                    child: Row(
+                      children: [
+                        if (_selectedNavItem == _navItems[i])
+                          const VerticalDivider(
+                            width: 2.0,
+                            thickness: 2.0,
+                            color: ConstColors.highlightGreen,
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            // top: 4.0,
+                            left:
+                                _selectedNavItem == _navItems[i] ? 12.0 : 14.0,
+                          ),
+                          child: Text(
+                            _navItems[i],
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: _selectedNavItem == _navItems[i]
+                                  ? ConstColors.highlightGreen
+                                  : ConstColors.textGreen,
+                              fontWeight: _selectedNavItem == _navItems[i]
+                                  ? FontWeight.w700
+                                  : FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       );
@@ -505,6 +554,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 18.0,
+                  ),
+                  OutlinedButton(
+                    onPressed: () {
+                      showDialog<void>(
+                        context: context,
+                        builder: (context) => const AlertDialog(
+                          content: Text('Preview profile clicked'),
+                        ),
+                      );
+                    },
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      side: const BorderSide(
+                        color: ConstColors.lightDivider,
+                      ),
+                    ),
+                    child: const Text(
+                      'Preview Profile',
+                      style: TextStyle(
+                        color: ConstColors.textGray,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -515,6 +593,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   right: 72.0,
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 24.0),
@@ -605,6 +684,352 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: _buildProfileItems(),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 80,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8.0,
+                                  left: 2.0,
+                                ),
+                                child: Text(
+                                  'START YEAR',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(.7),
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              TextFormField(
+                                textAlign: TextAlign.left,
+                                initialValue: '2018',
+                                // controller: searchCtrl,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  height: 1.0,
+                                ),
+                                cursorColor: ConstColors.highlightGreen,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  hintText: '',
+                                  hintStyle: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    // ignore: use_named_constants
+                                    borderSide: const BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 6.0,
+                                  ),
+                                  fillColor: ConstColors.lightGray,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Container(
+                          width: 80,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8.0,
+                                  left: 2.0,
+                                ),
+                                child: Text(
+                                  'END YEAR',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(.7),
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              TextFormField(
+                                textAlign: TextAlign.left,
+                                initialValue: '',
+                                // controller: searchCtrl,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  height: 1.0,
+                                ),
+                                cursorColor: ConstColors.highlightGreen,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  hintText: '',
+                                  hintStyle: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    // ignore: use_named_constants
+                                    borderSide: const BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 6.0,
+                                  ),
+                                  fillColor: ConstColors.lightGray,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Divider(
+                      height: 1.0,
+                      color: ConstColors.lightDivider,
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 8.0,
+                        left: 2.0,
+                      ),
+                      child: Text(
+                        'SCHOOL',
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(.7),
+                          fontSize: 11.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    TextFormField(
+                      textAlign: TextAlign.left,
+                      initialValue: 'USC Herman Ostrow School of Dentistry',
+                      // controller: searchCtrl,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        height: 1.0,
+                      ),
+                      cursorColor: ConstColors.highlightGreen,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        hintText: '',
+                        hintStyle: const TextStyle(
+                          fontSize: 14,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          // ignore: use_named_constants
+                          borderSide: const BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                        filled: true,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 6.0,
+                        ),
+                        fillColor: ConstColors.lightGray,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 152,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8.0,
+                                  left: 2.0,
+                                ),
+                                child: Text(
+                                  'DEGREE',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(.7),
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              TextFormField(
+                                textAlign: TextAlign.left,
+                                initialValue: 'DDS',
+                                // controller: searchCtrl,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  height: 1.0,
+                                ),
+                                cursorColor: ConstColors.highlightGreen,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  hintText: '',
+                                  hintStyle: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    // ignore: use_named_constants
+                                    borderSide: const BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 6.0,
+                                  ),
+                                  fillColor: ConstColors.lightGray,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Container(
+                          width: 80,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8.0,
+                                  left: 2.0,
+                                ),
+                                child: Text(
+                                  'START YEAR',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(.7),
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              TextFormField(
+                                textAlign: TextAlign.left,
+                                initialValue: '2010',
+                                // controller: searchCtrl,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  height: 1.0,
+                                ),
+                                cursorColor: ConstColors.highlightGreen,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  hintText: '',
+                                  hintStyle: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    // ignore: use_named_constants
+                                    borderSide: const BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 6.0,
+                                  ),
+                                  fillColor: ConstColors.lightGray,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Container(
+                          width: 100,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 8.0,
+                                  left: 2.0,
+                                ),
+                                child: Text(
+                                  'GRADUATION YEAR',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(.7),
+                                    fontSize: 11.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              TextFormField(
+                                textAlign: TextAlign.left,
+                                initialValue: '2014',
+                                // controller: searchCtrl,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  height: 1.0,
+                                ),
+                                cursorColor: ConstColors.highlightGreen,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  hintText: '',
+                                  hintStyle: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    // ignore: use_named_constants
+                                    borderSide: const BorderSide(
+                                      width: 0,
+                                      style: BorderStyle.none,
+                                    ),
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 6.0,
+                                  ),
+                                  fillColor: ConstColors.lightGray,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

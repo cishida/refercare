@@ -14,6 +14,7 @@ class NetworkScreen extends StatefulWidget {
 }
 
 class _NetworkScreenState extends State<NetworkScreen> {
+  String _selectedNavItem = 'All Connections';
   final List<String> _navItems = [
     'All Connections',
     'General Dentists',
@@ -65,27 +66,60 @@ class _NetworkScreenState extends State<NetworkScreen> {
 
     for (var i = 0; i < _navItems.length; i++) {
       widgets.add(
-        IntrinsicHeight(
-          child: Row(
-            children: [
-              const VerticalDivider(
-                width: 1.0,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  // top: 4.0,
-                  bottom: i == _navItems.length - 1 ? 4.0 : 14.0,
-                  left: 14.0,
-                ),
-                child: Text(
-                  _navItems[i],
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    color: ConstColors.textGreen,
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              if (mounted) {
+                setState(() {
+                  _selectedNavItem = _navItems[i];
+                });
+              }
+            },
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  const VerticalDivider(
+                    width: 1.0,
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      bottom: i == _navItems.length - 1 ? 4.0 : 14.0,
+                    ),
+                    child: Row(
+                      children: [
+                        if (_selectedNavItem == _navItems[i])
+                          const VerticalDivider(
+                            width: 2.0,
+                            thickness: 2.0,
+                            color: ConstColors.highlightGreen,
+                          ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            // top: 4.0,
+                            left:
+                                _selectedNavItem == _navItems[i] ? 12.0 : 14.0,
+                          ),
+                          child: Text(
+                            _navItems[i],
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: _selectedNavItem == _navItems[i]
+                                  ? ConstColors.highlightGreen
+                                  : ConstColors.textGreen,
+                              fontWeight: _selectedNavItem == _navItems[i]
+                                  ? FontWeight.w700
+                                  : FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       );
