@@ -92,9 +92,11 @@ class ReferCare extends StatelessWidget {
                       stackedRoutes: [
                         VNester(
                           path: '/authenticated',
-                          widgetBuilder: (child) => Authenticated(
-                            child: child,
-                          ), // Child is the widget from nestedRoutes
+                          widgetBuilder: (child) {
+                            return Authenticated(
+                              child: child,
+                            );
+                          }, // Child is the widget from nestedRoutes
                           nestedRoutes: _buildNavWidgets(),
                         ),
                         // VWidget(

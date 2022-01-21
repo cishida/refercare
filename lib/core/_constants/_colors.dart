@@ -6,6 +6,8 @@ class ConstColors {
   static const Color highlightGreen = Color(0xFF097B8E);
   static const Color textGreen = Color(0xFF20484F);
   static const Color lightDivider = Color(0xFFEBEEF1);
+  static const Color lightGray = Color(0xFFF8F8F8);
+  static const Color browseGray = Color(0xFFF6F8FA);
 
   // Core
   static const Color primary = Color(0xFF0A8BFF);

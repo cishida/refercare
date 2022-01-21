@@ -11,31 +11,27 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HomeActionChipRow(),
-                const Divider(
-                  height: 1.0,
-                  color: ConstColors.divider,
-                ),
-                Expanded(
-                  child: HomeFeed(),
-                ),
-              ],
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const HomeActionChipRow(),
+            const Divider(
+              height: 1.0,
+              color: ConstColors.divider,
             ),
-          ),
-          const VerticalDivider(
-            width: 1.0,
-            color: ConstColors.divider,
-          ),
-          const DentalConnections(),
-        ],
-      ),
+            Expanded(
+              child: HomeFeed(),
+            ),
+          ],
+        ),
+        const VerticalDivider(
+          width: 1.0,
+          color: ConstColors.divider,
+        ),
+        const DentalConnections(),
+      ],
     );
   }
 }
