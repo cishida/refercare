@@ -8,6 +8,7 @@ class ConstColors {
   static const Color lightDivider = Color(0xFFEBEEF1);
   static const Color lightGray = Color(0xFFF8F8F8);
   static const Color browseGray = Color(0xFFF6F8FA);
+  static const Color iconGray = Color(0xFF555A68);
 
   // Core
   static const Color primary = Color(0xFF0A8BFF);
