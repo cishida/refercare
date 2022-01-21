@@ -87,15 +87,20 @@ class AuthenticatedHeader extends StatelessWidget {
                 Row(
                   children: [
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog<void>(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                            content: Text('Create clicked'),
+                          ),
+                        );
+                      },
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                         ),
                         side: const BorderSide(
-                          width: 1.0,
                           color: ConstColors.highlightGreen,
-                          style: BorderStyle.solid,
                         ),
                       ),
                       child: const Text(
@@ -105,52 +110,121 @@ class AuthenticatedHeader extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 47.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 4.0),
-                      child: Image.asset(
-                        'assets/images/help-icon.png',
-                        width: 16.0,
-                        height: 16.0,
-                        color: ConstColors.iconGray,
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          showDialog<void>(
+                            context: context,
+                            builder: (context) => const AlertDialog(
+                              content: Text('Help clicked'),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 4.0),
+                              child: Image.asset(
+                                'assets/images/help-icon.png',
+                                width: 16.0,
+                                height: 16.0,
+                                color: ConstColors.iconGray,
+                              ),
+                            ),
+                            Text(
+                              'Help',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black.withOpacity(.5),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Text(
-                      'Help',
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black.withOpacity(.5),
+                    const SizedBox(
+                      width: 12.0,
+                    ),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          showDialog<void>(
+                            context: context,
+                            builder: (context) => const AlertDialog(
+                              content: Text('Notifications clicked'),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Image.asset(
+                            'assets/images/notifications-icon.png',
+                            width: 15.0,
+                            color: ConstColors.iconGray,
+                          ),
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 17.0,
-                        right: 25.0,
+                    const SizedBox(
+                      width: 15.0,
+                    ),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          showDialog<void>(
+                            context: context,
+                            builder: (context) => const AlertDialog(
+                              content: Text('Settings clicked'),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Image.asset(
+                            'assets/images/gear-icon.png',
+                            width: 16.0,
+                            color: ConstColors.iconGray,
+                          ),
+                        ),
                       ),
-                      child: Image.asset(
-                        'assets/images/notifications-icon.png',
-                        width: 15.0,
-                        color: ConstColors.iconGray,
+                    ),
+                    const SizedBox(
+                      width: 15.0,
+                    ),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          showDialog<void>(
+                            context: context,
+                            builder: (context) => const AlertDialog(
+                              content: Text('Account clicked'),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Image.asset(
+                            'assets/images/profile-icon.png',
+                            width: 16.0,
+                            color: ConstColors.iconGray,
+                          ),
+                        ),
                       ),
                     ),
-                    Image.asset(
-                      'assets/images/gear-icon.png',
-                      width: 16.0,
-                      color: ConstColors.iconGray,
-                    ),
-                    SizedBox(
-                      width: 25.0,
-                    ),
-                    Image.asset(
-                      'assets/images/profile-icon.png',
-                      width: 16.0,
-                      color: ConstColors.iconGray,
-                    ),
-                    SizedBox(
-                      width: 62.0,
+                    const SizedBox(
+                      width: 57.0,
                     ),
                   ],
                 ),
