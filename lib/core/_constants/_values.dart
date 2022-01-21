@@ -7,6 +7,7 @@ import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 // import 'package:refercare/ui/screens/authenticated/search/search_screen.dart';
 import 'package:refercare/ui/screens/authenticated/settings/settings_screen.dart';
 import 'package:refercare/ui/screens/network/network_screen.dart';
+import 'package:refercare/ui/screens/performance/performance_screen.dart';
 
 class Values {
   // UI
@@ -14,9 +15,10 @@ class Values {
   static const Map<String, Widget> navWidgets = {
     'Profile': ProfileScreen(),
     'Network': NetworkScreen(),
+    'Performance': PerformanceScreen(),
     'Messages': MessagesScreen(),
-    'Files': FilesScreen(),
-    'Opportunities': OpportunitiesScreen(),
-    'Settings': SettingsScreen(),
+    // 'Files': FilesScreen(),
+    // 'Opportunities': OpportunitiesScreen(),
+    // 'Settings': SettingsScreen(),
   };
 }
