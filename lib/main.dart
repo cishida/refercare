@@ -37,6 +37,15 @@ class ReferCare extends StatelessWidget {
     Values.navWidgets.forEach((key, value) {
       widgets.add(
         VWidget(
+          path: key.replaceAll(' ', '-').toLowerCase(),
+          widget: value,
+        ),
+      );
+    });
+
+    Values.otherRoutes.forEach((key, value) {
+      widgets.add(
+        VWidget(
           path: key.toLowerCase(),
           widget: value,
         ),

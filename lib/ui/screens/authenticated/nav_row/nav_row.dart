@@ -15,7 +15,7 @@ class NavRow extends StatelessWidget {
       widgets.add(
         NavItem(
           title: key,
-          routeName: '/authenticated/${key.toLowerCase()}',
+          routeName: '/authenticated/${key.replaceAll(' ', '-').toLowerCase()}',
         ),
       );
     });
