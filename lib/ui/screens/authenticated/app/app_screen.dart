@@ -14,7 +14,7 @@ class AppScreen extends StatefulWidget {
 
 class _AppScreenState extends State<AppScreen> {
   List<Widget> _buildOverallStars(int starCount) {
-    List<Widget> widgets = [];
+    final List<Widget> widgets = [];
 
     for (int i = 0; i < 5; i++) {
       double width = 2.0;
@@ -213,26 +213,37 @@ class _AppScreenState extends State<AppScreen> {
             const Spacer(),
             MouseRegion(
               cursor: SystemMouseCursors.click,
-              child: Container(
-                width: 140.0,
-                height: 40.0,
-                margin: const EdgeInsets.only(
-                  bottom: 12.0,
-                  top: 30.0,
-                ),
-                decoration: BoxDecoration(
-                  color: ConstColors.highlightGreen,
-                  border: Border.all(
-                    color: ConstColors.divider,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) => const AlertDialog(
+                      content: Text('Connect account clicked'),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: 140.0,
+                  height: 40.0,
+                  margin: const EdgeInsets.only(
+                    bottom: 12.0,
+                    top: 30.0,
                   ),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Connect Account',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: ConstColors.highlightGreen,
+                    border: Border.all(
+                      color: ConstColors.divider,
+                    ),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Connect Account',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -302,14 +313,29 @@ class _AppScreenState extends State<AppScreen> {
                   Column(
                     children: _buildOverallStars(appInfo['starCount'] as int),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20.0),
-                    child: Text(
-                      'Write a review',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.0,
-                          color: Colors.blue),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        showDialog<void>(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                            content: Text('Write a review clicked'),
+                          ),
+                        );
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.only(top: 20.0),
+                        child: Text(
+                          'Write a review',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.0,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -330,17 +356,20 @@ class _AppScreenState extends State<AppScreen> {
                   children: [
                     Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            vertical: 4.0,
-                          ),
-                          child: Text(
-                            'Integration Description',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                              color: ConstColors.highlightGreen,
+                        const MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                              vertical: 4.0,
+                            ),
+                            child: Text(
+                              'Integration Description',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                                color: ConstColors.highlightGreen,
+                              ),
                             ),
                           ),
                         ),
@@ -351,17 +380,20 @@ class _AppScreenState extends State<AppScreen> {
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(
-                        left: 8.0,
-                        bottom: 4.0,
-                      ),
-                      child: Text(
-                        'Product Description',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w400,
-                          color: ConstColors.highlightGreen,
+                    const MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 8.0,
+                          bottom: 4.0,
+                        ),
+                        child: Text(
+                          'Product Description',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w400,
+                            color: ConstColors.highlightGreen,
+                          ),
                         ),
                       ),
                     ),
@@ -400,7 +432,7 @@ class _AppScreenState extends State<AppScreen> {
                           color: ConstColors.textGreen,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15.0,
                       ),
                       Text(
@@ -411,23 +443,37 @@ class _AppScreenState extends State<AppScreen> {
                           color: ConstColors.textGreen,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5.0,
                       ),
                       Container(
                         height: 1.0,
                         color: ConstColors.divider,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15.0,
                       ),
-                      Center(
-                        child: Text(
-                          'Expand',
-                          style: const TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
-                            color: ConstColors.textGreen,
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            showDialog<void>(
+                              context: context,
+                              builder: (context) => const AlertDialog(
+                                content: Text('Expand clicked'),
+                              ),
+                            );
+                          },
+                          child: const Center(
+                            child: Text(
+                              'Expand',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w700,
+                                color: ConstColors.textGreen,
+                              ),
+                            ),
                           ),
                         ),
                       ),

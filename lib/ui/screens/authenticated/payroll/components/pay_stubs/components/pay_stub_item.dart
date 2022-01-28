@@ -42,7 +42,7 @@ class PayStubItem extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: 400.0,
+                width: 450.0,
                 child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: Text(

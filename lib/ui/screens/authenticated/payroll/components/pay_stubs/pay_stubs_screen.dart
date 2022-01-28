@@ -31,30 +31,44 @@ class PayStubsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Container(
-            width: 200.0,
-            height: 40.0,
-            margin: const EdgeInsets.only(bottom: 12.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: ConstColors.divider,
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    '2022',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w600,
-                    ),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                showDialog<void>(
+                  context: context,
+                  builder: (context) => const AlertDialog(
+                    content: Text('Year clicked'),
                   ),
-                  Icon(Icons.arrow_drop_down),
-                ],
+                );
+              },
+              child: Container(
+                width: 200.0,
+                height: 40.0,
+                margin: const EdgeInsets.only(bottom: 12.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                    color: ConstColors.divider,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        '2022',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

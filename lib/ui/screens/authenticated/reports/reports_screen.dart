@@ -25,34 +25,48 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Container(
-                width: 300.0,
-                height: 40.0,
-                margin: const EdgeInsets.only(
-                  bottom: 12.0,
-                  top: 20.0,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: ConstColors.divider,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        'Select',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w600,
-                          color: ConstColors.navGray,
-                        ),
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    showDialog<void>(
+                      context: context,
+                      builder: (context) => const AlertDialog(
+                        content: Text('Select clicked'),
                       ),
-                      Icon(Icons.arrow_drop_down),
-                    ],
+                    );
+                  },
+                  child: Container(
+                    width: 300.0,
+                    height: 40.0,
+                    margin: const EdgeInsets.only(
+                      bottom: 12.0,
+                      top: 20.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: ConstColors.divider,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Select',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w600,
+                              color: ConstColors.navGray,
+                            ),
+                          ),
+                          Icon(Icons.arrow_drop_down),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -113,30 +127,48 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Shared with Me',
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Spacer(),
-                    Text(
-                      'Sort By:',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 4.0,
-                    ),
-                    Text(
-                      'Recently updated',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w600,
+                    const Spacer(),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          showDialog<void>(
+                            context: context,
+                            builder: (context) => const AlertDialog(
+                              content: Text('Sort clicked'),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: const [
+                            Text(
+                              'Sort By:',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 4.0,
+                            ),
+                            Text(
+                              'Recently updated',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

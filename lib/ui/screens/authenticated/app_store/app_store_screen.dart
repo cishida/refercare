@@ -91,32 +91,46 @@ class _AppStoreScreenState extends State<AppStoreScreen> {
                             color: ConstColors.textGreen,
                           ),
                         ),
-                        Container(
-                          width: 70.0,
-                          height: 30.0,
-                          margin: const EdgeInsets.only(
-                            top: 42.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
-                          ),
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Row(
-                              children: const [
-                                Text(
-                                  'View All',
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: ConstColors.navGray,
-                                  ),
+                        MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () {
+                              showDialog<void>(
+                                context: context,
+                                builder: (context) => const AlertDialog(
+                                  content: Text('View all clicked'),
                                 ),
-                              ],
+                              );
+                            },
+                            child: Container(
+                              width: 70.0,
+                              height: 30.0,
+                              margin: const EdgeInsets.only(
+                                top: 42.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Row(
+                                  children: const [
+                                    Text(
+                                      'View All',
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w600,
+                                        color: ConstColors.navGray,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -130,8 +144,8 @@ class _AppStoreScreenState extends State<AppStoreScreen> {
           ),
         ),
         Row(
-          children: const [
-            Padding(
+          children: [
+            const Padding(
               padding: EdgeInsets.only(
                 top: 40.0,
                 bottom: 20.0,
@@ -145,26 +159,44 @@ class _AppStoreScreenState extends State<AppStoreScreen> {
                 ),
               ),
             ),
-            Spacer(),
-            Padding(
-              padding: EdgeInsets.only(top: 12.0),
-              child: Text(
-                'See All',
-                style: TextStyle(
-                  color: ConstColors.textGreen,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w400,
+            const Spacer(),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) => const AlertDialog(
+                      content: Text('See all clicked'),
+                    ),
+                  );
+                },
+                child: Row(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(top: 12.0),
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                          color: ConstColors.textGreen,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 11.0,
+                        left: 4.0,
+                      ),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        size: 16.0,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 11.0,
-                left: 4.0,
-              ),
-              child: Icon(
-                Icons.arrow_forward,
-                size: 16.0,
               ),
             ),
           ],
@@ -278,7 +310,7 @@ class FiveStars extends StatelessWidget {
   final int count;
 
   List<Widget> _buildStars() {
-    List<Widget> widgets = [];
+    final List<Widget> widgets = [];
 
     for (var i = 0; i < 5; i++) {
       widgets.add(
