@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final BoxDecoration decoration = BoxDecoration(
-      color: ConstColors.lightGreen,
+      color: Colors.white,
       borderRadius: BorderRadius.circular(4.0),
       boxShadow: [
         BoxShadow(
@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     height: 150.0,
                     decoration: BoxDecoration(
-                      color: ConstColors.lightGreen,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     child: Row(
@@ -258,7 +258,7 @@ class AppItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Container(
-                  color: ConstColors.lightGreen,
+                  color: Colors.white,
                   child: Image.asset(
                     'assets/images/gear-icon.png',
                     height: 100.0,
@@ -305,9 +305,14 @@ class _TodoItemState extends State<TodoItem> {
       // color: ConstColors.lightGreen,
       margin: const EdgeInsets.only(bottom: 15.0),
       child: CheckboxListTile(
-        tileColor: ConstColors.lightGreen,
+        tileColor: Colors.white,
         checkColor: Colors.white,
         activeColor: ConstColors.highlightGreen,
+        shape: const RoundedRectangleBorder(
+          side: BorderSide(
+            color: ConstColors.divider,
+          ),
+        ),
         title: Text(
           widget.todo.text!,
           style: const TextStyle(

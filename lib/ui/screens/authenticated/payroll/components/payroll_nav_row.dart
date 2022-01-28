@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/ui/screens/authenticated/nav_row/components/nav_item.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
+import 'package:refercare/ui/screens/authenticated/payroll/components/payroll_nav_item.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';
 
 class PayrollNavRow extends StatelessWidget {
@@ -28,7 +29,7 @@ class PayrollNavRow extends StatelessWidget {
 
     _navWidgets.forEach((key, value) {
       widgets.add(
-        NavItem(
+        PayrollNavItem(
           title: key,
           routeName:
               '/authenticated/payroll/${key.replaceAll(' ', '-').toLowerCase()}',
@@ -42,20 +43,14 @@ class PayrollNavRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: ConstColors.lightGray,
       child: Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 8.0,
-                  bottom: 10.0,
-                ),
-                child: Row(
-                  children: _buildNavItems(),
-                ),
+              Row(
+                children: _buildNavItems(),
               ),
             ],
           ),

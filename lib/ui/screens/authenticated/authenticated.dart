@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/ui/screens/authenticated/components/authenticated_header.dart';
 import 'package:refercare/ui/screens/authenticated/nav_row/nav_row.dart';
 
@@ -13,7 +14,7 @@ class Authenticated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ConstColors.lightGray,
       body: CustomScrollView(
         slivers: [
           SliverFillRemaining(

@@ -54,7 +54,9 @@ class _PayrollScreenState extends State<PayrollScreen> {
                 ),
               ),
               PayrollNavRow(),
-              Expanded(child: widget.child)
+              Expanded(
+                child: widget.child,
+              )
             ],
           ),
         ),
