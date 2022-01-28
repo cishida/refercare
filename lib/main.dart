@@ -6,6 +6,7 @@ import 'package:refercare/core/services/auth/firebase_auth_service.dart';
 import 'package:refercare/theme.dart';
 import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
+import 'package:refercare/ui/screens/authenticated/app/app_screen.dart';
 import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
@@ -161,6 +162,16 @@ class ReferCare extends StatelessWidget {
                             VWidget(
                               path: 'app-store',
                               widget: const AppStoreScreen(),
+                            ),
+                            VWidget(
+                              path: 'app-store',
+                              widget: const AppStoreScreen(),
+                              stackedRoutes: [
+                                VWidget(
+                                  path: ':name',
+                                  widget: const AppScreen(),
+                                ),
+                              ],
                             ),
                           ],
                         ),
