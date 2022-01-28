@@ -85,20 +85,33 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 50.0,
               decoration: decoration,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   VerticalDivider(
                     color: ConstColors.highlightGreen,
                     width: 4.0,
                     thickness: 4.0,
                   ),
-                  SizedBox(
-                    width: 12.0,
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 12.0,
+                      right: 12.0,
+                      top: 7.0,
+                    ),
+                    child: Icon(
+                      Icons.info_outline,
+                      size: 22.0,
+                      color: ConstColors.highlightGreen,
+                    ),
                   ),
                   SizedBox(
                     width: 475.0,
-                    child: Text(
-                      'Install an app that supports Single Sign On, and your employees will be able to sign in with one click from here.',
-                      style: TextStyle(),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 7.0),
+                      child: Text(
+                        'Install an app that supports Single Sign On, and your employees will be able to sign in with one click from here.',
+                        style: TextStyle(),
+                      ),
                     ),
                   ),
                 ],
@@ -111,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               width: 750,
               padding: const EdgeInsets.only(
-                top: 50.0,
+                top: 30.0,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,26 +140,162 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Container(
-                    height: 150.0,
+                    height: 160.0,
+                    width: 750,
+                    padding: const EdgeInsets.all(
+                      15.0,
+                    ),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: ConstColors.lightGreen,
                       borderRadius: BorderRadius.circular(4.0),
+                      border: Border.all(
+                        color: ConstColors.divider,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: .5,
+                          blurRadius: .5,
+                          offset: const Offset(
+                            0,
+                            .5,
+                          ), // changes position of shadow
+                        ),
+                      ],
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          children: const [
-                            Text('Introducing ReferCare Unity'),
-                          ],
+                        SizedBox(
+                          width: 500.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Introducing ReferCare Integrations',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 8.0,
+                              ),
+                              const Text(
+                                'Four powerful new products: Unified Analytics, Role-Based Permissions, Policy Management, and Workflow Automator. Start using Workflow Automator today -- the rest will be available soon.',
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 15.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: GestureDetector(
+                                        behavior: HitTestBehavior.opaque,
+                                        onTap: () {
+                                          showDialog<void>(
+                                            context: context,
+                                            builder: (context) =>
+                                                const AlertDialog(
+                                              content: Text('Register clicked'),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 147.0,
+                                          height: 30.0,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            border: Border.all(
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8.0),
+                                            child: Row(
+                                              children: const [
+                                                Text(
+                                                  'Register for training',
+                                                  style: TextStyle(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: ConstColors.navGray,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 15.0,
+                                    ),
+                                    MouseRegion(
+                                      cursor: SystemMouseCursors.click,
+                                      child: GestureDetector(
+                                        behavior: HitTestBehavior.opaque,
+                                        onTap: () {
+                                          showDialog<void>(
+                                            context: context,
+                                            builder: (context) =>
+                                                const AlertDialog(
+                                              content: Text('Try clicked'),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 180.0,
+                                          height: 30.0,
+                                          decoration: BoxDecoration(
+                                            color: ConstColors.highlightGreen,
+                                            border: Border.all(
+                                              color: ConstColors.divider,
+                                            ),
+                                          ),
+                                          child: const Center(
+                                            child: Text(
+                                              'Try Workflow Automator',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                            // children: const [],
-                            )
+                        const Padding(
+                          padding: EdgeInsets.only(
+                            top: 10.0,
+                            right: 30.0,
+                          ),
+                          child: Icon(
+                            Icons.add_chart,
+                            size: 70.0,
+                            color: ConstColors.navGray,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 30.0),
+                    padding: EdgeInsets.symmetric(vertical: 25.0),
                     child: Text(
                       'Your To-Do List',
                       style: TextStyle(
@@ -160,7 +309,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: _buildTodoItems(),
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 30.0),
+                    padding: EdgeInsets.only(top: 15.0, bottom: 25.0),
                     child: Text(
                       'Apps',
                       style: TextStyle(
@@ -169,6 +318,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+                  const Divider(
+                    height: 1.0,
+                    color: ConstColors.divider,
+                  ),
                   Row(
                     children: [
                       AppItem(
@@ -176,31 +329,46 @@ class _HomeScreenState extends State<HomeScreen> {
                           context.vRouter.to('/authenticated/app-store');
                         },
                         title: 'Add New App',
-                        imageName: 'assets/images/gear-icon.png',
+                        imageName: 'assets/images/add-icon.png',
+                        imageColor: ConstColors.textGreen,
+                        imageWidth: 40.0,
+                        backgroundColor: Colors.white,
                       ),
                       AppItem(
                         onClick: () {
-                          context.vRouter.to('/authenticated/payroll');
+                          context.vRouter
+                              .to('/authenticated/payroll/pay-stubs');
                         },
                         title: 'Payroll',
-                        imageName: 'assets/images/gear-icon.png',
+                        imageName:
+                            'assets/images/placeholder_icons/payroll-icon-4.png',
+                        imageColor: Colors.white,
+                        imageWidth: 80.0,
                       ),
                       AppItem(
                         onClick: () {
                           context.vRouter.to('/authenticated/reports');
                         },
                         title: 'Reports',
-                        imageName: 'assets/images/gear-icon.png',
+                        imageName:
+                            'assets/images/placeholder_icons/reports-icon-2.png',
+                        imageColor: Colors.white,
+                        imageWidth: 70.0,
                       ),
                       AppItem(
                         onClick: () {},
                         title: 'HR',
-                        imageName: 'assets/images/gear-icon.png',
+                        imageName:
+                            'assets/images/placeholder_icons/hr-icon-1.png',
+                        imageColor: Colors.white,
                       ),
                       AppItem(
                         onClick: () {},
                         title: 'Accounting',
-                        imageName: 'assets/images/gear-icon.png',
+                        imageName:
+                            'assets/images/placeholder_icons/accounting-icon-2.png',
+                        imageColor: Colors.white,
+                        imageWidth: 70.0,
                       ),
                     ],
                   ),
@@ -228,6 +396,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
+        // const SizedBox(
+        //   height: 100.0,
+        // ),
       ],
     );
   }
@@ -239,45 +410,67 @@ class AppItem extends StatelessWidget {
     required this.onClick,
     required this.title,
     required this.imageName,
+    this.imageColor,
+    this.imageWidth,
+    this.backgroundColor = ConstColors.textGreen,
   }) : super(key: key);
 
   final Function onClick;
   final String title;
   final String imageName;
+  final Color? imageColor;
+  final double? imageWidth;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 30.0),
+      padding: const EdgeInsets.all(8.0),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
+        child: InkWell(
           onTap: () => onClick(),
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Container(
-                  color: Colors.white,
-                  child: Image.asset(
-                    'assets/images/gear-icon.png',
-                    height: 100.0,
-                    width: 100.0,
+          onHover: (isHovering) {},
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: backgroundColor,
+                      border: Border.all(
+                        color: ConstColors.divider,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        imageName,
+                        width: imageWidth ?? 100.0,
+                        color: imageColor,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.0,
+                const SizedBox(
+                  height: 10.0,
                 ),
-              ),
-            ],
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
