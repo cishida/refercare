@@ -37,7 +37,7 @@ class PayrollNavItem extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontSize: 13.0,
+                    fontSize: highlighted ? 13.0 : 13.0,
                     fontWeight: highlighted ? FontWeight.w700 : FontWeight.w400,
                     color: ConstColors.textGreen,
                   ),
