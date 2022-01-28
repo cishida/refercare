@@ -7,21 +7,23 @@ class NavItem extends StatelessWidget {
     Key? key,
     required this.title,
     required this.routeName,
+    this.secondaryRouteName = '',
   }) : super(key: key);
 
   final String title;
   final String routeName;
+  final String secondaryRouteName;
 
   @override
   Widget build(BuildContext context) {
-    final bool highlighted = context.vRouter.path == routeName ||
+    final bool highlighted = context.vRouter.path.contains(routeName) ||
         context.vRouter.path == '/' && routeName == '/authenticated/home';
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {
-          context.vRouter.to(routeName);
+          context.vRouter.to(routeName + secondaryRouteName);
         },
         child: Container(
           // height: 24.0,

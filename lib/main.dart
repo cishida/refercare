@@ -7,8 +7,13 @@ import 'package:refercare/core/services/auth/firebase_auth_service.dart';
 import 'package:refercare/theme.dart';
 import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
+import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
+import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
+import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';
+import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
+import 'package:refercare/ui/screens/authenticated/reports/reports_screen.dart';
 import 'package:vrouter/vrouter.dart';
 
 Future<void> main() async {
@@ -24,36 +29,36 @@ class ReferCare extends StatelessWidget {
 
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
-  List<VWidget> _buildNavWidgets() {
-    final List<VWidget> widgets = [];
+  // List<VWidget> _buildNavWidgets() {
+  //   final List<VWidget> widgets = [];
 
-    widgets.add(
-      VWidget(
-        path: null,
-        widget: const HomeScreen(),
-      ),
-    );
+  //   widgets.add(
+  //     VWidget(
+  //       path: null,
+  //       widget: const HomeScreen(),
+  //     ),
+  //   );
 
-    Values.navWidgets.forEach((key, value) {
-      widgets.add(
-        VWidget(
-          path: key.replaceAll(' ', '-').toLowerCase(),
-          widget: value,
-        ),
-      );
-    });
+  //   Values.navWidgets.forEach((key, value) {
+  //     widgets.add(
+  //       VWidget(
+  //         path: key.replaceAll(' ', '-').toLowerCase(),
+  //         widget: value,
+  //       ),
+  //     );
+  //   });
 
-    Values.otherRoutes.forEach((key, value) {
-      widgets.add(
-        VWidget(
-          path: key.toLowerCase(),
-          widget: value,
-        ),
-      );
-    });
+  //   Values.otherRoutes.forEach((key, value) {
+  //     widgets.add(
+  //       VWidget(
+  //         path: key.replaceAll(' ', '-').toLowerCase(),
+  //         widget: value,
+  //       ),
+  //     );
+  //   });
 
-    return widgets;
-  }
+  //   return widgets;
+  // }
 
   // This widget is the root of your application.
   @override
@@ -106,7 +111,59 @@ class ReferCare extends StatelessWidget {
                               child: child,
                             );
                           }, // Child is the widget from nestedRoutes
-                          nestedRoutes: _buildNavWidgets(),
+                          // nestedRoutes: _buildNavWidgets(),
+                          nestedRoutes: [
+                            VWidget(
+                              path: null,
+                              widget: const HomeScreen(),
+                            ),
+                            VWidget(
+                              path: 'home',
+                              widget: const HomeScreen(),
+                            ),
+                            VNester(
+                              path: 'payroll',
+                              widgetBuilder: (child) {
+                                return PayrollScreen(
+                                  child: child,
+                                );
+                              },
+                              nestedRoutes: [
+                                VWidget(
+                                  path: null,
+                                  widget: const PayStubsScreen(),
+                                ),
+                                VWidget(
+                                  path: 'pay-stubs',
+                                  widget: const PayStubsScreen(),
+                                ),
+                                VWidget(
+                                  path: 'w2s',
+                                  widget: const W2sScreen(),
+                                ),
+                                VWidget(
+                                  path: 'withholdings',
+                                  widget: const W2sScreen(),
+                                ),
+                                VWidget(
+                                  path: 'settings',
+                                  widget: const W2sScreen(),
+                                ),
+                                VWidget(
+                                  path: 'payment-information',
+                                  widget: const W2sScreen(),
+                                ),
+                              ],
+                            ),
+                            VWidget(
+                              path: 'reports',
+                              widget: const ReportsScreen(),
+                            ),
+                            VWidget(
+                              path: 'app-store',
+                              widget: const AppStoreScreen(),
+                            ),
+                          ],
                         ),
                         // VWidget(
                         //   path: '/home',

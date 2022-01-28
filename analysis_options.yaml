@@ -47,7 +47,7 @@ analyzer:
   language:
     strict-raw-types: true
   strong-mode:
-    implicit-dynamic: false
+    implicit-dynamic: true
     implicit-casts: false
   errors:
     missing_required_param: warning
