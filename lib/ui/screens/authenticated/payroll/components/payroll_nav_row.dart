@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
-import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/ui/screens/authenticated/nav_row/components/nav_item.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';
@@ -11,11 +10,11 @@ class PayrollNavRow extends StatelessWidget {
   }) : super(key: key);
 
   final Map<String, Widget> _navWidgets = {
-    'Pay Stubs': PayStubsScreen(),
-    'W2s': W2sScreen(),
-    'Withholdings': W2sScreen(),
-    'Settings': W2sScreen(),
-    'Payment Information': W2sScreen(),
+    'Pay Stubs': const PayStubsScreen(),
+    'W2s': const W2sScreen(),
+    'Withholdings': const W2sScreen(),
+    'Settings': const W2sScreen(),
+    'Payment Information': const W2sScreen(),
     // 'Network': NetworkScreen(),
     // 'Performance': PerformanceScreen(),
     // 'Messages': MessagesScreen(),

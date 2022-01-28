@@ -270,7 +270,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final BoxDecoration shadowDecoration = BoxDecoration(
       color: Colors.white,
       borderRadius: const BorderRadius.only(
-        topLeft: const Radius.circular(10),
+        topLeft: Radius.circular(10),
         topRight: Radius.circular(10),
         // bottomLeft: Radius.circular(10),
         // bottomRight: Radius.circular(10),
@@ -416,8 +416,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           const OnboardingStepHeader(
                             title: 'PROFILE',
                             subtitle: 'Complete your profile',
-                            titleColor: const Color(0xFF1443E8),
-                            titleBackgroundColor: const Color(0xFF99E7FC),
+                            titleColor: Color(0xFF1443E8),
+                            titleBackgroundColor: Color(0xFF99E7FC),
                           ),
                           const SizedBox(
                             height: 23.0,
@@ -436,7 +436,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             title: 'NETWORK',
                             subtitle: 'Connect with your colleagues',
                             titleColor: Color(0xFF6E31EF),
-                            titleBackgroundColor: const Color(0xFFE7DBFC),
+                            titleBackgroundColor: Color(0xFFE7DBFC),
                           ),
                           const SizedBox(
                             height: 23.0,
@@ -687,7 +687,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 80,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -741,10 +741,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30.0,
                         ),
-                        Container(
+                        SizedBox(
                           width: 80,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -800,14 +800,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
-                    Divider(
+                    const Divider(
                       height: 1.0,
                       color: ConstColors.lightDivider,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
                     Padding(
@@ -861,7 +861,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 152,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -915,10 +915,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30.0,
                         ),
-                        Container(
+                        SizedBox(
                           width: 80,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -972,10 +972,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30.0,
                         ),
-                        Container(
+                        SizedBox(
                           width: 100,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

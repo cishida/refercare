@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/core/services/auth/firebase_auth_service.dart';
 import 'package:refercare/theme.dart';
 import 'package:refercare/ui/screens/auth/auth_widget.dart';

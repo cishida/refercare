@@ -10,8 +10,6 @@ class AppStoreScreen extends StatefulWidget {
 class _AppStoreScreenState extends State<AppStoreScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Apps'),
-    );
+    return const Text('App Store');
   }
 }

@@ -139,8 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         Column(
-                          children: [],
-                        )
+                            // children: const [],
+                            )
                       ],
                     ),
                   ),
@@ -285,12 +285,12 @@ class AppItem extends StatelessWidget {
 }
 
 class TodoItem extends StatefulWidget {
-  TodoItem({
+  const TodoItem({
     Key? key,
     required this.todo,
   }) : super(key: key);
 
-  Todo todo;
+  final Todo todo;
 
   @override
   State<TodoItem> createState() => _TodoItemState();
@@ -310,7 +310,7 @@ class _TodoItemState extends State<TodoItem> {
         activeColor: ConstColors.highlightGreen,
         title: Text(
           widget.todo.text!,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.w600,
           ),

@@ -11,7 +11,7 @@ class NavRow extends StatelessWidget {
   List<Widget> _buildNavItems() {
     final List<Widget> widgets = [];
 
-    Values.routes.forEach((element) {
+    for (final element in Values.routes) {
       widgets.add(
         NavItem(
           title: element['title'].toString(),
@@ -19,7 +19,7 @@ class NavRow extends StatelessWidget {
           secondaryRouteName: element['secondaryRouteName'].toString(),
         ),
       );
-    });
+    }
 
     return widgets;
   }

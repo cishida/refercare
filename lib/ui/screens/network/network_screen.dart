@@ -186,7 +186,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
         const Expanded(
           child: Text(''),
         ),
-        Container(
+        SizedBox(
           width: 362,
           height: 800.0,
           child: Column(
@@ -241,12 +241,13 @@ class _NetworkScreenState extends State<NetworkScreen> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 14.0,
-                                  color: Color(0xFF3C5072).withOpacity(.6),
+                                  color:
+                                      const Color(0xFF3C5072).withOpacity(.6),
                                 ),
                               ),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             height: 1.0,
                             color: ConstColors.divider,
                           ),
@@ -256,7 +257,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40.0,
               ),
               SizedBox(

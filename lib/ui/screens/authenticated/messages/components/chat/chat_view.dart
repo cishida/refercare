@@ -26,9 +26,9 @@ class _ChatViewState extends State<ChatView> {
 
   List<ChatMessage> messages = <ChatMessage>[];
 
-  var m = <ChatMessage>[];
+  List<ChatMessage> m = <ChatMessage>[];
 
-  var i = 0;
+  int i = 0;
 
   @override
   void initState() {
@@ -36,28 +36,26 @@ class _ChatViewState extends State<ChatView> {
   }
 
   void systemMessage() {
-    Timer(Duration(milliseconds: 300), () {
+    Timer(const Duration(milliseconds: 300), () {
       if (i < 6) {
         setState(() {
           messages = [...messages, m[i]];
         });
         i++;
       }
-      Timer(Duration(milliseconds: 300), () {
-        _chatViewKey.currentState!.scrollController
-          ..animateTo(
-            _chatViewKey
-                .currentState!.scrollController.position.maxScrollExtent,
-            curve: Curves.easeOut,
-            duration: const Duration(milliseconds: 300),
-          );
+      Timer(const Duration(milliseconds: 300), () {
+        _chatViewKey.currentState!.scrollController.animateTo(
+          _chatViewKey.currentState!.scrollController.position.maxScrollExtent,
+          curve: Curves.easeOut,
+          duration: const Duration(milliseconds: 300),
+        );
       });
     });
   }
 
   void onSend(ChatMessage message) {
     messages.add(message);
-    // print(message.toJson());
+    // debugPrint(message.toJson());
     // FirebaseFirestore.instance
     //     .collection('messages')
     //     .doc(DateTime.now().millisecondsSinceEpoch.toString())
@@ -65,7 +63,7 @@ class _ChatViewState extends State<ChatView> {
 
     /* setState(() {
       messages = [...messages, message];
-      print(messages.length);
+      debugPrint(messages.length);
     });
 
     if (i == 0) {
@@ -85,7 +83,7 @@ class _ChatViewState extends State<ChatView> {
     ];
     return DashChat(
       key: _chatViewKey,
-      inverted: false,
+      // inverted: false,
       onSend: onSend,
       sendOnEnter: true,
       textInputAction: TextInputAction.send,
@@ -94,14 +92,14 @@ class _ChatViewState extends State<ChatView> {
       dateFormat: DateFormat('MMM dd, yyyy'),
       timeFormat: DateFormat('h:mm a'),
       messages: messages,
-      showUserAvatar: false,
-      showAvatarForEveryMessage: false,
+      // showUserAvatar: false,
+      // showAvatarForEveryMessage: false,
       scrollToBottom: false,
       onPressAvatar: (ChatUser user) {
-        print("OnPressAvatar: ${user.name}");
+        debugPrint("OnPressAvatar: ${user.name}");
       },
       onLongPressAvatar: (ChatUser user) {
-        print("OnLongPressAvatar: ${user.name}");
+        debugPrint("OnLongPressAvatar: ${user.name}");
       },
       // inputMaxLines: 1,
       messageContainerPadding: const EdgeInsets.only(left: 5.0, right: 5.0),
@@ -143,13 +141,13 @@ class _ChatViewState extends State<ChatView> {
         });
       },
       onLoadEarlier: () {
-        print("laoding...");
+        debugPrint("laoding...");
       },
-      shouldShowLoadEarlier: false,
-      showTraillingBeforeSend: true,
+      // shouldShowLoadEarlier: false,
+      // showTraillingBeforeSend: true,
       trailing: <Widget>[
         IconButton(
-          icon: Icon(Icons.photo),
+          icon: const Icon(Icons.photo),
           onPressed: () async {
             // final picker = ImagePicker();
             // PickedFile? result = await picker.getImage(
@@ -223,10 +221,10 @@ class _ChatViewState extends State<ChatView> {
     //             showAvatarForEveryMessage: false,
     //             scrollToBottom: false,
     //             onPressAvatar: (ChatUser user) {
-    //               print("OnPressAvatar: ${user.name}");
+    //               debugPrint("OnPressAvatar: ${user.name}");
     //             },
     //             onLongPressAvatar: (ChatUser user) {
-    //               print("OnLongPressAvatar: ${user.name}");
+    //               debugPrint("OnLongPressAvatar: ${user.name}");
     //             },
     //             inputMaxLines: 5,
     //             messageContainerPadding: EdgeInsets.only(left: 5.0, right: 5.0),
@@ -266,7 +264,7 @@ class _ChatViewState extends State<ChatView> {
     //               });
     //             },
     //             onLoadEarlier: () {
-    //               print("laoding...");
+    //               debugPrint("laoding...");
     //             },
     //             shouldShowLoadEarlier: false,
     //             showTraillingBeforeSend: true,

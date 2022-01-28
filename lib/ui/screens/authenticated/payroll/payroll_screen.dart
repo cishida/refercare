@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/payroll_nav_row.dart';
 
 class PayrollScreen extends StatefulWidget {
@@ -17,21 +16,21 @@ class PayrollScreen extends StatefulWidget {
 class _PayrollScreenState extends State<PayrollScreen> {
   @override
   Widget build(BuildContext context) {
-    final BoxDecoration decoration = BoxDecoration(
-      color: ConstColors.lightGreen,
-      borderRadius: BorderRadius.circular(4.0),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 1,
-          blurRadius: 2,
-          offset: const Offset(
-            0,
-            2,
-          ), // changes position of shadow
-        ),
-      ],
-    );
+    // final BoxDecoration decoration = BoxDecoration(
+    //   color: ConstColors.lightGreen,
+    //   borderRadius: BorderRadius.circular(4.0),
+    //   boxShadow: [
+    //     BoxShadow(
+    //       color: Colors.grey.withOpacity(0.5),
+    //       spreadRadius: 1,
+    //       blurRadius: 2,
+    //       offset: const Offset(
+    //         0,
+    //         2,
+    //       ), // changes position of shadow
+    //     ),
+    //   ],
+    // );
 
     return Column(
       children: [
