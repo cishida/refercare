@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
-import 'package:refercare/ui/screens/authenticated/nav_row/components/nav_item.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/payroll_nav_item.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
+import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/core/models/todo/todo.dart';
 import 'package:vrouter/vrouter.dart';
 
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              width: 900.0,
+              width: Values.screenWidth,
               height: 50.0,
               decoration: decoration,
               child: Row(

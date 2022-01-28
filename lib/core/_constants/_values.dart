@@ -5,6 +5,7 @@ import 'package:refercare/ui/screens/authenticated/reports/reports_screen.dart';
 
 class Values {
   // UI
+  static const double screenWidth = 900.0;
   static const double homeHeaderHeight = 55.0;
   // static const Map<String, Widget> navWidgets = {
   //   'Home': HomeScreen(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
+import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/ui/screens/authenticated/components/authenticated_header.dart';
 import 'package:refercare/ui/screens/authenticated/nav_row/nav_row.dart';
 
@@ -24,7 +25,10 @@ class Authenticated extends StatelessWidget {
                 const AuthenticatedHeader(),
                 const NavRow(),
                 Expanded(
-                  child: child,
+                  child: SizedBox(
+                    width: Values.screenWidth,
+                    child: child,
+                  ),
                 ),
                 // const Text('Footer'),
               ],

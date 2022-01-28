@@ -15,19 +15,22 @@ class PayStubItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const BoxDecoration decoration = BoxDecoration(
+    final BoxDecoration decoration = BoxDecoration(
       color: Colors.white,
       // border: Border.all(
       //   color: ConstColors.divider,
       // ),
       border: Border(
-        left: BorderSide(
+        top: BorderSide(
+          color: isHeader ? ConstColors.divider : Colors.white,
+        ),
+        left: const BorderSide(
           color: ConstColors.divider,
         ),
-        right: BorderSide(
+        right: const BorderSide(
           color: ConstColors.divider,
         ),
-        bottom: BorderSide(
+        bottom: const BorderSide(
           color: ConstColors.divider,
         ),
       ),
