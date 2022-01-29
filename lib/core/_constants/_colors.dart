@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ConstColors {
   // v2 Core
+  static const Color backgroundColor = Colors.white;
   static const Color lightGreen = Color(0xFFF2F7F5);
   static const Color highlightGreen = Color(0xFF097B8E);
   static const Color textGreen = Color(0xFF20484F);

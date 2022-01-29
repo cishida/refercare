@@ -15,7 +15,7 @@ class Authenticated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ConstColors.lightGray,
+      backgroundColor: ConstColors.backgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverFillRemaining(

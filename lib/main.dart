@@ -13,7 +13,9 @@ import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
+import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 import 'package:refercare/ui/screens/authenticated/reports/reports_screen.dart';
+import 'package:refercare/ui/screens/network/network_screen.dart';
 import 'package:vrouter/vrouter.dart';
 
 Future<void> main() async {
@@ -116,6 +118,14 @@ class ReferCare extends StatelessWidget {
                             VWidget(
                               path: null,
                               widget: const HomeScreen(),
+                            ),
+                            VWidget(
+                              path: 'network',
+                              widget: const NetworkScreen(),
+                            ),
+                            VWidget(
+                              path: 'profile',
+                              widget: const ProfileScreen(),
                             ),
                             VWidget(
                               path: 'home',

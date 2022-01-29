@@ -27,25 +27,26 @@ class NavRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ConstColors.lightGray,
-      margin: const EdgeInsets.only(
-        left: 68.0,
-      ),
+      color: ConstColors.backgroundColor,
       child: Column(
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 8.0,
-                  bottom: 10.0,
+          SizedBox(
+            width: Values.screenWidth,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8.0,
+                    bottom: 10.0,
+                    left: 50.0,
+                  ),
+                  child: Row(
+                    children: _buildNavItems(),
+                  ),
                 ),
-                child: Row(
-                  children: _buildNavItems(),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
           const Divider(
             height: 1.0,

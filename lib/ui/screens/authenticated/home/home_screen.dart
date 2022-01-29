@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/core/models/todo/todo.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/graphs/collections_graph.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/onboarding/passive_onboarding.dart';
+import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 import 'package:vrouter/vrouter.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -69,6 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const PassiveOnboarding(),
+            SizedBox(
+              width: 500.0,
+              height: 300.0,
+              child: const CollectionsGraph(),
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 10.0,

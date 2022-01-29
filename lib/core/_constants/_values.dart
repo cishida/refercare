@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
+import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 import 'package:refercare/ui/screens/authenticated/reports/reports_screen.dart';
+import 'package:refercare/ui/screens/network/network_screen.dart';
 
 class Values {
   // UI
-  static const double screenWidth = 900.0;
+  static const double screenWidth = 1400.0;
   static const double homeHeaderHeight = 55.0;
 
   static const Map<String, Map<String, dynamic>> placeholderAppInfos = {
@@ -90,6 +92,20 @@ class Values {
       'routeName': 'home',
       'title': 'Home',
       'widget': HomeScreen,
+      'secondaryRouteName': '',
+    },
+    {
+      'isNullRoute': true,
+      'routeName': 'network',
+      'title': 'Network',
+      'widget': NetworkScreen,
+      'secondaryRouteName': '',
+    },
+    {
+      'isNullRoute': true,
+      'routeName': 'profile',
+      'title': 'Profile',
+      'widget': ProfileScreen,
       'secondaryRouteName': '',
     },
     {

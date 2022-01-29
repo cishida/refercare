@@ -19,9 +19,10 @@ class AuthenticatedHeader extends StatelessWidget {
             height: 1.0,
             color: Colors.white,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
+          Container(
+            width: Values.screenWidth,
+            margin: const EdgeInsets.only(
+              left: 50.0,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,7 +225,7 @@ class AuthenticatedHeader extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 57.0,
+                      width: 50.0,
                     ),
                   ],
                 ),
