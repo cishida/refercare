@@ -95,7 +95,11 @@ class PassiveOnboarding extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.only(
+                                    top: 12.0,
+                                    left: 12.0,
+                                    bottom: 8.0,
+                                  ),
                                   child: Row(
                                     children: const [
                                       Text(
@@ -202,7 +206,7 @@ class PassiveOnboarding extends StatelessWidget {
                         children: [
                           const OnboardingStepHeader(
                             title: 'PAYROLL',
-                            subtitle: 'Control benefits & compensation',
+                            subtitle: 'Manage benefits & compensation',
                             titleColor: Color(0xFF6E31EF),
                             titleBackgroundColor: Color(0xFFE7DBFC),
                           ),
@@ -212,9 +216,26 @@ class PassiveOnboarding extends StatelessWidget {
                           Container(
                             height: 197,
                             width: 256.0,
-                            decoration: shadowDecoration,
-                            child: Image.asset(
-                              'assets/images/onboarding/payroll.png',
+                            // decoration: shadowDecoration,
+                            child: Wrap(
+                              children: const [
+                                PayrollItem(
+                                  name: 'Nicholas Wong',
+                                  salary: '2492.53',
+                                  bonus: '350.00',
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 10.0,
+                                    bottom: 10.0,
+                                  ),
+                                  child: PayrollItem(
+                                    name: 'Rebecca Everley',
+                                    salary: '1938.04',
+                                    bonus: '250.0',
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -268,7 +289,7 @@ class PassiveOnboarding extends StatelessWidget {
                       Container(
                         height: 70.0,
                         width: 420.0,
-                        margin: const EdgeInsets.only(bottom: 40.0),
+                        margin: const EdgeInsets.only(bottom: 90.0),
                         padding: const EdgeInsets.all(12.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -458,7 +479,7 @@ class PassiveOnboardingHeader extends StatelessWidget {
                   ],
                 ),
                 const Text(
-                  'Browse the App Shop for integrations to get the most out of ReferCare.',
+                  'Integrate with services in App Shop to get the most out of ReferCare.',
                   style: TextStyle(
                     color: ConstColors.textGreen,
                     fontSize: 18.0,
@@ -566,6 +587,174 @@ class OnboardingStepHeader extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+class PayrollItem extends StatelessWidget {
+  const PayrollItem({
+    Key? key,
+    required this.name,
+    required this.salary,
+    required this.bonus,
+  }) : super(key: key);
+
+  final String name;
+  final String salary;
+  final String bonus;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        // border:
+        //     Border.all(color: ConstColors.divider),
+        borderRadius: BorderRadius.circular(4.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: .5,
+            blurRadius: 4,
+            offset: const Offset(
+              0,
+              2,
+            ),
+          ),
+        ],
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 12.0,
+              height: 100.0,
+            ),
+            // Image.asset(
+            //   image,
+            //   width: 42.0,
+            //   filterQuality: FilterQuality.high,
+            // ),
+            // const SizedBox(
+            //   width: 12.0,
+            // ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 12.0,
+                    bottom: 2.0,
+                  ),
+                  child: Text(
+                    name,
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(.7),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                const SizedBox(
+                  width: 244.0,
+                  child: Divider(
+                    height: 1.0,
+                    color: ConstColors.lightDivider,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 100.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Salary',
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(.7),
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            salary,
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(.7),
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // const SizedBox(
+                    //   width: 30.0,
+                    // ),
+                    SizedBox(
+                      width: 100.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Bonus',
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(.7),
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            bonus,
+                            style: TextStyle(
+                              color: Colors.black.withOpacity(.7),
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Wrap(
+                          direction: Axis.vertical,
+                          children: [
+                            Text(
+                              'Reimbu',
+                              overflow: TextOverflow.fade,
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(.7),
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          '0',
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(.7),
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
