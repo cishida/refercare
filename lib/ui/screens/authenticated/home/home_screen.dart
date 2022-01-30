@@ -410,7 +410,7 @@ class _HomeScreenState extends State<HomeScreen> {
             //             children: [
             //               AppItem(
             //                 onClick: () {
-            //                   context.vRouter.to('/authenticated/app-store');
+            //                   context.vRouter.to('/authenticated/integrations');
             //                 },
             //                 title: 'Add New App',
             //                 imageName: 'assets/images/add-icon.png',

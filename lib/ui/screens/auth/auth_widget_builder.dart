@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:refercare/core/providers/integrations_provider.dart';
 import 'package:refercare/core/services/auth/firebase_auth_service.dart';
 
 /// Used to create user-dependent objects that need to be accessible by all widgets.
@@ -17,6 +18,9 @@ class AuthWidgetBuilder extends StatelessWidget {
   List<SingleChildWidget> _buildProviders(User? user) {
     return [
       Provider<User?>.value(value: user),
+      ChangeNotifierProvider(
+        create: (_) => IntegrationsProvider(),
+      ),
       // NOTE: Any other user-bound providers here can be added here
     ];
   }

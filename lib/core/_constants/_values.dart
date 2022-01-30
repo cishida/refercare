@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:refercare/ui/screens/authenticated/accounting/accounting_screen.dart';
-import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
+import 'package:refercare/ui/screens/authenticated/integrations/integrations_screen.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
 import 'package:refercare/ui/screens/authenticated/hr/hr_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
@@ -75,7 +75,7 @@ class Values {
   //     child: Text('test child'),
   //   ),
   //   'Reports': ReportsScreen(),
-  //   'App Store': AppStoreScreen(),
+  //   'App Store': IntegrationsScreen(),
   //   // 'Profile': ProfileScreen(),
   //   // 'Network': NetworkScreen(),
   //   // 'Performance': PerformanceScreen(),
@@ -144,8 +144,8 @@ class Values {
     {
       'isNullRoute': false,
       'routeName': 'integrations',
-      'title': 'Integrations',
-      'widget': AppStoreScreen,
+      'title': 'App Shop',
+      'widget': IntegrationsScreen,
       'secondaryRouteName': '',
     },
   ];

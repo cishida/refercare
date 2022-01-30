@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/core/_constants/_values.dart';
-import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
+import 'package:refercare/core/models/integration.dart';
+import 'package:refercare/core/providers/integrations_provider.dart';
+import 'package:refercare/ui/screens/authenticated/integrations/integrations_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vrouter/vrouter.dart';
 
@@ -76,7 +79,7 @@ class _AppScreenState extends State<AppScreen> {
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
-                    context.vRouter.to('/authenticated/app-store');
+                    context.vRouter.to('/authenticated/integrations');
                   },
                   child: const Text(
                     'All',
@@ -218,8 +221,55 @@ class _AppScreenState extends State<AppScreen> {
                 onTap: () {
                   showDialog<void>(
                     context: context,
-                    builder: (context) => const AlertDialog(
-                      content: Text('Connect account clicked'),
+                    builder: (context) => AlertDialog(
+                      content: Column(
+                        children: [
+                          Text('Connect account clicked'),
+                          MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () {
+                                Provider.of<IntegrationsProvider>(
+                                  context,
+                                  listen: false,
+                                ).addIntegration(
+                                  Integration(
+                                    name: 'Yapi',
+                                  ),
+                                );
+                                setState(() {});
+                                context.vRouter.pop();
+                                context.vRouter.to('/authenticated/yapi');
+                              },
+                              child: Container(
+                                width: 140.0,
+                                height: 40.0,
+                                margin: const EdgeInsets.only(
+                                  bottom: 12.0,
+                                  top: 30.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: ConstColors.highlightGreen,
+                                  border: Border.all(
+                                    color: ConstColors.divider,
+                                  ),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    'Connect Account',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },

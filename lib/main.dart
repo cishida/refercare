@@ -8,13 +8,14 @@ import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
 import 'package:refercare/ui/screens/authenticated/accounting/accounting_screen.dart';
 import 'package:refercare/ui/screens/authenticated/app/app_screen.dart';
-import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
+import 'package:refercare/ui/screens/authenticated/integrations/integrations_screen.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
 import 'package:refercare/ui/screens/authenticated/hr/hr_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
+import 'package:refercare/ui/screens/authenticated/placeholder_screens/yapi_screen.dart';
 import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 import 'package:refercare/ui/screens/authenticated/reports/reports_screen.dart';
 import 'package:refercare/ui/screens/network/network_screen.dart';
@@ -179,19 +180,23 @@ class ReferCare extends StatelessWidget {
                               path: 'reports',
                               widget: const ReportsScreen(),
                             ),
-                            // VWidget(
-                            //   path: 'integrations',
-                            //   widget: const AppStoreScreen(),
-                            // ),
                             VWidget(
                               path: 'integrations',
-                              widget: const AppStoreScreen(),
+                              widget: const IntegrationsScreen(),
+                            ),
+                            VWidget(
+                              path: 'integrations',
+                              widget: const IntegrationsScreen(),
                               stackedRoutes: [
                                 VWidget(
                                   path: ':name',
                                   widget: const AppScreen(),
                                 ),
                               ],
+                            ),
+                            VWidget(
+                              path: 'yapi',
+                              widget: const YapiScreen(),
                             ),
                           ],
                         ),
