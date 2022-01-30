@@ -93,33 +93,33 @@ class AuthenticatedHeader extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    OutlinedButton(
-                      onPressed: () {
-                        showDialog<void>(
-                          context: context,
-                          builder: (context) => const AlertDialog(
-                            content: Text('Create clicked'),
-                          ),
-                        );
-                      },
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ),
-                        side: const BorderSide(
-                          color: ConstColors.highlightGreen,
-                        ),
-                      ),
-                      child: const Text(
-                        'Create',
-                        style: TextStyle(
-                          color: ConstColors.highlightGreen,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 47.0,
-                    ),
+                    // OutlinedButton(
+                    //   onPressed: () {
+                    //     showDialog<void>(
+                    //       context: context,
+                    //       builder: (context) => const AlertDialog(
+                    //         content: Text('Create clicked'),
+                    //       ),
+                    //     );
+                    //   },
+                    //   style: OutlinedButton.styleFrom(
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(18.0),
+                    //     ),
+                    //     side: const BorderSide(
+                    //       color: ConstColors.highlightGreen,
+                    //     ),
+                    //   ),
+                    //   child: const Text(
+                    //     'Create',
+                    //     style: TextStyle(
+                    //       color: ConstColors.highlightGreen,
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   width: 47.0,
+                    // ),
                     MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(

@@ -29,6 +29,16 @@ class Values {
     'CE',
   ];
 
+  static const List<String> yapiNavItems = [
+    'Overview',
+    'Online Patient Forms',
+    'Appointment Reminders',
+    'Reputation Management',
+    'Online Patient Bookings',
+    'Office Messaging',
+    'Phone Integration',
+  ];
+
   static const Map<String, Map<String, dynamic>> placeholderAppInfos = {
     'tab32': {
       'name': 'Tab32',
