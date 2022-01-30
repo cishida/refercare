@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:refercare/core/_constants/_colors.dart';
@@ -12,21 +14,100 @@ class IntegrationsScreen extends StatefulWidget {
 }
 
 class _IntegrationsScreenState extends State<IntegrationsScreen> {
-  String _selectedNavItem = 'My Integrations';
-  final List<String> _navItems = [
-    'All',
-    'Billing',
-    'EMRs',
-    'Human Resources',
-    'Marketing',
-    'Patient Tools',
-    'Communication',
-    'Equipment',
-    'Continued Education',
-  ];
+  String _selectedNavItem = 'All';
 
   List<Widget> _buildPlaceholderApps() {
     final List<Widget> widgets = [];
+
+    if (_selectedNavItem != 'All') {
+      String key = 'revenue-well';
+      Map<String, dynamic> value = Values.placeholderAppInfos[key]!;
+      widgets.add(
+        IntegrationsItem(
+          imageName:
+              'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
+          title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
+          padding: value['padding'] as EdgeInsets,
+          fit: value['fit'] as BoxFit,
+          starCount: value['starCount'] as int,
+        ),
+      );
+      key = 'yapi';
+      value = Values.placeholderAppInfos[key]!;
+      widgets.add(
+        IntegrationsItem(
+          imageName:
+              'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
+          title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
+          padding: value['padding'] as EdgeInsets,
+          fit: value['fit'] as BoxFit,
+          starCount: value['starCount'] as int,
+        ),
+      );
+      key = 'medchat';
+      value = Values.placeholderAppInfos[key]!;
+      widgets.add(
+        IntegrationsItem(
+          imageName:
+              'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
+          title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
+          padding: value['padding'] as EdgeInsets,
+          fit: value['fit'] as BoxFit,
+          starCount: value['starCount'] as int,
+        ),
+      );
+      key = 'weave';
+      value = Values.placeholderAppInfos[key]!;
+      widgets.add(
+        IntegrationsItem(
+          imageName:
+              'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
+          title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
+          padding: value['padding'] as EdgeInsets,
+          fit: value['fit'] as BoxFit,
+          starCount: value['starCount'] as int,
+        ),
+      );
+      key = 'zocdoc';
+      value = Values.placeholderAppInfos[key]!;
+      widgets.add(
+        IntegrationsItem(
+          imageName:
+              'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
+          title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
+          padding: value['padding'] as EdgeInsets,
+          fit: value['fit'] as BoxFit,
+          starCount: value['starCount'] as int,
+        ),
+      );
+
+      key = 'adit';
+      value = Values.placeholderAppInfos[key]!;
+      widgets.add(
+        IntegrationsItem(
+          imageName:
+              'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
+          title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
+          padding: value['padding'] as EdgeInsets,
+          fit: value['fit'] as BoxFit,
+          starCount: value['starCount'] as int,
+        ),
+      );
+
+      return widgets;
+    }
 
     Values.placeholderAppInfos.forEach((key, value) {
       widgets.add(
@@ -34,6 +115,8 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
           imageName:
               'assets/images/logos/$key-logo-1.${key == 'yapi' ? 'webp' : 'png'}',
           title: value['name'].toString(),
+          description: value['description'].toString(),
+          category: value['category'].toString(),
           padding: value['padding'] as EdgeInsets,
           fit: value['fit'] as BoxFit,
           starCount: value['starCount'] as int,
@@ -47,7 +130,7 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
   List<Widget> _buildNavItems() {
     final List<Widget> widgets = [];
 
-    for (var i = 0; i < _navItems.length; i++) {
+    for (var i = 0; i < Values.integrationNavItems.length; i++) {
       widgets.add(
         MouseRegion(
           cursor: SystemMouseCursors.click,
@@ -56,7 +139,7 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
             onTap: () {
               if (mounted) {
                 setState(() {
-                  _selectedNavItem = _navItems[i];
+                  _selectedNavItem = Values.integrationNavItems[i];
                 });
               }
             },
@@ -68,11 +151,13 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      bottom: i == _navItems.length - 1 ? 4.0 : 14.0,
+                      bottom: i == Values.integrationNavItems.length - 1
+                          ? 4.0
+                          : 14.0,
                     ),
                     child: Row(
                       children: [
-                        if (_selectedNavItem == _navItems[i])
+                        if (_selectedNavItem == Values.integrationNavItems[i])
                           const VerticalDivider(
                             width: 2.0,
                             thickness: 2.0,
@@ -81,17 +166,21 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
                         Padding(
                           padding: EdgeInsets.only(
                             // top: 4.0,
-                            left:
-                                _selectedNavItem == _navItems[i] ? 12.0 : 14.0,
+                            left: _selectedNavItem ==
+                                    Values.integrationNavItems[i]
+                                ? 12.0
+                                : 14.0,
                           ),
                           child: Text(
-                            _navItems[i],
+                            Values.integrationNavItems[i],
                             style: TextStyle(
                               fontSize: 14.0,
-                              color: _selectedNavItem == _navItems[i]
+                              color: _selectedNavItem ==
+                                      Values.integrationNavItems[i]
                                   ? ConstColors.highlightGreen
                                   : ConstColors.textGreen,
-                              fontWeight: _selectedNavItem == _navItems[i]
+                              fontWeight: _selectedNavItem ==
+                                      Values.integrationNavItems[i]
                                   ? FontWeight.w700
                                   : FontWeight.w400,
                             ),
@@ -307,60 +396,60 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
               // ),
               Row(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(
-                      top: 40.0,
+                      top: 25.0,
                       bottom: 20.0,
                     ),
                     child: Text(
-                      'Most Popular',
+                      _selectedNavItem.toString(),
                       style: TextStyle(
                         color: ConstColors.textGreen,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                  const Spacer(),
-                  MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () {
-                        showDialog<void>(
-                          context: context,
-                          builder: (context) => const AlertDialog(
-                            content: Text('See all clicked'),
-                          ),
-                        );
-                      },
-                      child: Row(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 12.0),
-                            child: Text(
-                              'See All',
-                              style: TextStyle(
-                                color: ConstColors.textGreen,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: 11.0,
-                              left: 4.0,
-                            ),
-                            child: Icon(
-                              Icons.arrow_forward,
-                              size: 16.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // const Spacer(),
+                  // MouseRegion(
+                  //   cursor: SystemMouseCursors.click,
+                  //   child: GestureDetector(
+                  //     behavior: HitTestBehavior.opaque,
+                  //     onTap: () {
+                  //       showDialog<void>(
+                  //         context: context,
+                  //         builder: (context) => const AlertDialog(
+                  //           content: Text('See all clicked'),
+                  //         ),
+                  //       );
+                  //     },
+                  //     child: Row(
+                  //       children: const [
+                  //         Padding(
+                  //           padding: EdgeInsets.only(top: 12.0),
+                  //           child: Text(
+                  //             'See All',
+                  //             style: TextStyle(
+                  //               color: ConstColors.textGreen,
+                  //               fontSize: 18.0,
+                  //               fontWeight: FontWeight.w400,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Padding(
+                  //           padding: EdgeInsets.only(
+                  //             top: 11.0,
+                  //             left: 4.0,
+                  //           ),
+                  //           child: Icon(
+                  //             Icons.arrow_forward,
+                  //             size: 16.0,
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               const Divider(
@@ -370,9 +459,19 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
               const SizedBox(
                 height: 20.0,
               ),
-              Row(
-                children: _buildPlaceholderApps(),
+              Container(
+                height: 1800.0,
+                margin: const EdgeInsets.only(right: 95.0),
+                child: GridView.count(
+                  // shrinkWrap: true,
+                  // physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 3,
+                  children: _buildPlaceholderApps(),
+                ),
               ),
+              // Row(
+              //   children: _buildPlaceholderApps(),
+              // ),
             ],
           ),
         ),
@@ -382,10 +481,12 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
 }
 
 class IntegrationsItem extends StatelessWidget {
-  const IntegrationsItem({
+  IntegrationsItem({
     Key? key,
     required this.imageName,
     required this.title,
+    required this.description,
+    required this.category,
     this.fit = BoxFit.cover,
     this.padding = EdgeInsets.zero,
     this.starCount = 0,
@@ -393,53 +494,108 @@ class IntegrationsItem extends StatelessWidget {
 
   final String imageName;
   final String title;
+  final String description;
+  final String category;
   final BoxFit fit;
   final EdgeInsets padding;
   final int starCount;
 
+  List<Icon> _icons = [
+    Icon(
+      Icons.lightbulb_outline,
+      color: ConstColors.highlightGreen,
+    ),
+    Icon(
+      Icons.bolt_outlined,
+      color: Colors.yellow[900],
+    ),
+    Icon(
+      Icons.connect_without_contact_outlined,
+      color: Colors.blue,
+    ),
+  ];
+
+  List<Widget> _buildFeatures() {
+    final List<Widget> widgets = [];
+
+    final random = Random();
+
+    final int num = random.nextInt(3) + 1;
+
+    for (var i = 0; i < num; i++) {
+      widgets.add(
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: CircleAvatar(
+            radius: 16.0,
+            backgroundColor: ConstColors.lightGray,
+            child: _icons[i],
+          ),
+        ),
+      );
+    }
+
+    return widgets;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+      margin: const EdgeInsets.only(
+        right: 20.0,
+        bottom: 20.0,
+      ),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: ConstColors.divider,
+        ),
+      ),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {
             context.vRouter.to(
               '/authenticated/integrations/${title.replaceAll(' ', '-').toLowerCase()}',
             );
           },
-          onHover: (isHovering) {},
-          customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(30.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
-                    border: Border.all(
-                      color: ConstColors.lightDivider,
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: SizedBox.fromSize(
-                      size: const Size.fromRadius(50), // Image radius
-                      child: Padding(
-                        padding: padding,
-                        child: Image.asset(
-                          imageName,
-                          width: 100,
-                          height: 100,
-                          fit: fit,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20.0),
+                        border: Border.all(
+                          color: ConstColors.lightDivider,
+                        ),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: SizedBox.fromSize(
+                          size: const Size.fromRadius(50), // Image radius
+                          child: Padding(
+                            padding: padding,
+                            child: Image.asset(
+                              imageName,
+                              width: 100,
+                              height: 100,
+                              fit: fit,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: _buildFeatures(),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 12.0,
@@ -447,7 +603,7 @@ class IntegrationsItem extends StatelessWidget {
                 Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -456,6 +612,33 @@ class IntegrationsItem extends StatelessWidget {
                 ),
                 FiveStars(
                   count: starCount,
+                ),
+                SizedBox(height: 15.0),
+                Text(
+                  category,
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: 4.0,
+                ),
+                Text(
+                  description,
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  'Learn more',
+                  style: const TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.blue,
+                  ),
                 ),
               ],
             ),

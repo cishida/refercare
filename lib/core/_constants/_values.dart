@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:refercare/core/models/integration.dart';
 import 'package:refercare/ui/screens/authenticated/accounting/accounting_screen.dart';
 import 'package:refercare/ui/screens/authenticated/integrations/integrations_screen.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
@@ -16,15 +17,38 @@ class Values {
   static const double totalsWidth = 300;
   static const double homeHeaderHeight = 55.0;
 
+  static const List<String> integrationNavItems = [
+    'All',
+    'Billing',
+    'EMRs',
+    'Human Resources',
+    'Marketing',
+    'DPMS',
+    'Patient Tools',
+    'Vendors',
+    'CE',
+  ];
+
   static const Map<String, Map<String, dynamic>> placeholderAppInfos = {
-    'planet-dds': {
-      'name': 'Planet DDS',
-      'website': 'https://www.planetdds.com/',
-      'padding': EdgeInsets.all(8.0),
+    'tab32': {
+      'name': 'Tab32',
+      'website': 'https://www.tab32.com/',
+      'padding': EdgeInsets.all(4.0),
       'fit': BoxFit.cover,
-      'starCount': 5,
+      'starCount': 4,
+      'category': 'DPMS',
       'description':
-          '"The best cloud-based dental software for practices of all sizes."',
+          'Patient first enterprise cloud dental software. Empowering providers with integrated patient communication, e-forms, automized payments, imaging etc.',
+    },
+    'medchat': {
+      'name': 'Medchat',
+      'website': 'https://medchatapp.com/',
+      'padding': EdgeInsets.zero,
+      'fit': BoxFit.cover,
+      'starCount': 4,
+      'category': 'Patient Tool',
+      'description':
+          'MedChat is the new standard for healthcare communication and intelligent automation at scale. Transform how consumers interact with your organization by providing modern communication tools at scale.',
     },
     'dentrix': {
       'name': 'Dentrix',
@@ -32,8 +56,19 @@ class Values {
       'padding': EdgeInsets.zero,
       'fit': BoxFit.cover,
       'starCount': 3,
+      'category': 'EMR',
       'description':
-          '"Dentrix connects your practice technology into one management system, one workflow – so teams work smarter."',
+          'Dentrix connects your practice technology into one management system, one workflow – so teams work smarter.',
+    },
+    'weave': {
+      'name': 'Weave',
+      'website': 'https://www.getweave.com/',
+      'padding': EdgeInsets.zero,
+      'fit': BoxFit.contain,
+      'starCount': 4,
+      'category': 'Patient Tool',
+      'description':
+          'Weave is one place for every customer interaction. Interact with your customers wherever they are with phone, text, email or chat.',
     },
     'curve-dental': {
       'name': 'Curve Dental',
@@ -41,23 +76,28 @@ class Values {
       'padding': EdgeInsets.zero,
       'fit': BoxFit.cover,
       'starCount': 4,
-      'description': '"The all-in-one practice management solution."',
+      'category': 'EMR',
+      'description': 'The all-in-one practice management solution.',
     },
-    'tab32': {
-      'name': 'Tab32',
-      'website': 'https://www.tab32.com/',
-      'padding': EdgeInsets.all(4.0),
-      'fit': BoxFit.cover,
-      'starCount': 4,
-      'description': '"Patient first enterprise cloud dental software."',
-    },
-    'yapi': {
-      'name': 'Yapi',
-      'website': 'https://yapiapp.com/',
-      'padding': EdgeInsets.all(4.0),
+    'workday': {
+      'name': 'Workday',
+      'website': 'https://www.workday.com/',
+      'padding': EdgeInsets.zero,
       'fit': BoxFit.contain,
       'starCount': 4,
-      'description': '"Dental software that elevates your practice."',
+      'category': 'Human Resources',
+      'description':
+          'The finance, HR, and planning system for a changing world.',
+    },
+    'revenue-well': {
+      'name': 'Revenue Well',
+      'website': 'https://www.revenuewell.com/',
+      'padding': EdgeInsets.zero,
+      'fit': BoxFit.cover,
+      'starCount': 4,
+      'category': 'Patient Tool, Marketing',
+      'description':
+          'RevenueWell is the all-in-one dental practice marketing & patient communication platform',
     },
     'midmark': {
       'name': 'Midmark',
@@ -65,8 +105,49 @@ class Values {
       'padding': EdgeInsets.all(4.0),
       'fit': BoxFit.contain,
       'starCount': 5,
+      'category': 'Vendor',
       'description':
-          '"Products designed to help you provide quality, safe and comfortable treatment — and enable more positive and meaningful interactions between you, your patients and your staff."',
+          'Products designed to help you provide quality, safe and comfortable treatment — and enable more positive and meaningful interactions between you, your patients and your staff.',
+    },
+    'zocdoc': {
+      'name': 'Zocdoc',
+      'website': 'https://www.zocdoc.com/dentists',
+      'padding': EdgeInsets.zero,
+      'fit': BoxFit.contain,
+      'starCount': 5,
+      'category': 'Patient Tool',
+      'description':
+          'Thousands of providers. One app. The Zocdoc app is the quickest, easiest way to book and keep track of your appointments.',
+    },
+    'planet-dds': {
+      'name': 'Planet DDS',
+      'website': 'https://www.planetdds.com/',
+      'padding': EdgeInsets.all(8.0),
+      'fit': BoxFit.cover,
+      'starCount': 5,
+      'category': 'DPMS',
+      'description':
+          'The best cloud-based dental software for all sizes. Planet DDS is a comprehensive practice management solution for modern dental practices.',
+    },
+    'yapi': {
+      'name': 'Yapi',
+      'website': 'https://yapiapp.com/',
+      'padding': EdgeInsets.all(4.0),
+      'fit': BoxFit.contain,
+      'starCount': 4,
+      'category': 'Patient Tool',
+      'description':
+          'Dental software that elevates your practice with online patient registration, forms, and communication tools.',
+    },
+    'adit': {
+      'name': 'Adit',
+      'website': 'https://adit.com/',
+      'padding': EdgeInsets.zero,
+      'fit': BoxFit.contain,
+      'starCount': 3,
+      'category': 'Patient Tool',
+      'description':
+          'Designed & engineered specifically for Dental Practices. Adit is the only software solution that integrates VoIP, Texts, Emails, Patient Forms, Online Scheduling, Analytics, Reviews, Payments and more, all in one place!',
     },
   };
   // static const Map<String, Widget> navWidgets = {

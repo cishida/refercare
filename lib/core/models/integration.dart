@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Integration {
   Integration({
     required this.name,
+    this.route,
     this.website,
     this.starCount,
     this.description,
@@ -10,6 +11,7 @@ class Integration {
   });
 
   String name;
+  String? route;
   String? website;
   int? starCount;
   String? description;
