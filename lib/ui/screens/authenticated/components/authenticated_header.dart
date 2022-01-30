@@ -44,7 +44,12 @@ class AuthenticatedHeader extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
-                          Text('Dr. Mohamed Saber'),
+                          Text(
+                            'Dr. Mohamed Saber',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           Text('Brentwood Endodontics'),
                         ],
                       ),
