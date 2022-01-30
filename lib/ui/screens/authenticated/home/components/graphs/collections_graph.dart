@@ -7,16 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/core/_constants/_values.dart';
 
-class LineChartSample7 extends StatefulWidget {
-  LineChartSample7({
+class CollectionsChart extends StatefulWidget {
+  const CollectionsChart({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<LineChartSample7> createState() => _LineChartSample7State();
+  State<CollectionsChart> createState() => _CollectionsChartState();
 }
 
-class _LineChartSample7State extends State<LineChartSample7> {
+class _CollectionsChartState extends State<CollectionsChart> {
   final int minDailyRev = 0;
   final int maxDailyRev = 7000;
   final List<double> _currentRevenues = [];
@@ -34,7 +34,7 @@ class _LineChartSample7State extends State<LineChartSample7> {
         continue;
       }
 
-      result = minDailyRev + random.nextInt(maxDailyRev - minDailyRev + 1000);
+      result = minDailyRev + random.nextInt(maxDailyRev - minDailyRev + 1500);
       _currentRevenues.add(result.toDouble());
 
       result = minDailyRev + random.nextInt(maxDailyRev - minDailyRev + 500);
@@ -130,11 +130,11 @@ class _LineChartSample7State extends State<LineChartSample7> {
               getTitles: (value) {
                 switch (value.toInt()) {
                   case 1:
-                    return 'Jan 1';
+                    return '1';
                   case 23:
                     return 'Now';
                   case 31:
-                    return 'Jan 31';
+                    return '31';
                   default:
                     return '';
                 }
@@ -174,18 +174,29 @@ class CollectionsGraph extends StatefulWidget {
 }
 
 class CollectionsGraphState extends State<CollectionsGraph> {
-  late bool isShowingMainData;
-  double _collectionsTotal = 127432.58;
+  double _collectionsTotal = 107432.58;
+  double _expectedToday = 4587.32;
+  bool _flipped = true;
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
-    isShowingMainData = true;
     // defines a timer
-    _timer = Timer.periodic(Duration(seconds: 3), (Timer t) {
+    final random = Random();
+
+    _timer = Timer.periodic(const Duration(seconds: 3), (Timer t) {
       setState(() {
         _collectionsTotal += 253.67;
+        _collectionsTotal += random.nextInt(50);
+        if (_flipped) {
+          _expectedToday += 17.97;
+          _expectedToday += random.nextInt(40);
+        } else {
+          _expectedToday -= 19.19;
+          _expectedToday -= random.nextInt(40);
+        }
+        _flipped = !_flipped;
       });
     });
   }
@@ -202,6 +213,13 @@ class CollectionsGraphState extends State<CollectionsGraph> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          'January',
+          style: TextStyle(
+            fontSize: 32.0,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         SizedBox(
           height: 250.0,
           child: Row(
@@ -218,24 +236,24 @@ class CollectionsGraphState extends State<CollectionsGraph> {
                   ),
                   child: Stack(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 8.0,
-                          left: 8.0,
-                        ),
-                        child: const Text(
-                          'Gross Collection Volume',
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(
+                      //     top: 8.0,
+                      //     left: 8.0,
+                      //   ),
+                      //   child: const Text(
+                      //     'Gross Collection Volume',
+                      //     style: TextStyle(
+                      //       fontSize: 22.0,
+                      //       fontWeight: FontWeight.w600,
+                      //     ),
+                      //   ),
+                      // ),
                       Column(
                         // crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Expanded(
-                            child: LineChartSample7(),
+                            child: CollectionsChart(),
                           ),
                         ],
                       ),
@@ -372,14 +390,24 @@ class CollectionsGraphState extends State<CollectionsGraph> {
                             const SizedBox(
                               height: 4.0,
                             ),
-                            const Text(
-                              '\$4,587.32',
-                              style: TextStyle(
+                            AnimatedFlipCounter(
+                              fractionDigits: 2,
+                              thousandSeparator: ',',
+                              value: _expectedToday,
+                              textStyle: const TextStyle(
                                 fontSize: 28.0,
                                 fontWeight: FontWeight.w600,
                                 color: ConstColors.textGreen,
                               ),
                             ),
+                            // const Text(
+                            //   '\$4,587.32',
+                            //   style: TextStyle(
+                            //     fontSize: 28.0,
+                            //     fontWeight: FontWeight.w600,
+                            //     color: ConstColors.textGreen,
+                            //   ),
+                            // ),
                             const SizedBox(
                               height: 8.0,
                             ),

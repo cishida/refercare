@@ -3,6 +3,9 @@ import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/core/_constants/_values.dart';
 import 'package:refercare/core/models/todo/todo.dart';
 import 'package:refercare/ui/screens/authenticated/home/components/graphs/collections_graph.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/graphs/collections_per_patient.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/graphs/patients_graph.dart';
+import 'package:refercare/ui/screens/authenticated/home/components/graphs/referral_graph.dart';
 import 'package:refercare/ui/screens/authenticated/home/components/onboarding/passive_onboarding.dart';
 import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 import 'package:vrouter/vrouter.dart';
@@ -17,133 +20,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Todo> _todos = [
-    Todo(
-      text:
-          '[Brentwood Endodontics] Missing Tax Agency Account Number - Potential fees of \$200',
-      completed: false,
-      created: DateTime.now(),
-    ),
-    Todo(
-      text:
-          '[Action Required] Sign Business Associate Agreement with ReferCare',
-      completed: false,
-      created: DateTime.now(),
-    ),
-    Todo(
-      text:
-          '[Action Required] Employee Stacey Anderson missing payroll information',
-      completed: false,
-      created: DateTime.now(),
-    ),
-  ];
-
-  List<Widget> _buildTodoItems() {
-    final List<Widget> widgets = [];
-
-    for (final todo in _todos) {
-      widgets.add(
-        TodoItem(todo: todo),
-      );
-    }
-
-    return widgets;
-  }
-
-  final List<Map<String, String>> _recommendedProfiles = [
-    {
-      'name': 'Nicholas Wong, DDS',
-      'workplace': 'General Dentist at Santa Monica Dental Partners',
-    },
-    {
-      'name': 'Dr. Mark Brafka',
-      'workplace': 'General Dentist at Santa Monica Dental Partners',
-    },
-    {
-      'name': 'Sarah Powell',
-      'workplace': 'General Dentist at Santa Monica Dental Partners',
-    },
-    {
-      'name': 'Mischa Foster',
-      'workplace': 'General Dentist at Santa Monica Dental Partners',
-    },
-  ];
-
-  List<Widget> _buildRecommendedProfiles() {
-    final List<Widget> widgets = [];
-
-    for (final element in _recommendedProfiles) {
-      widgets.add(
-        MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              showDialog<void>(
-                context: context,
-                builder: (context) => const AlertDialog(
-                  content: Text('Recommended profile clicked'),
-                ),
-              );
-            },
-            child: IntrinsicHeight(
-              child: Row(
-                children: [
-                  const VerticalDivider(
-                    width: 1.0,
-                    color: ConstColors.divider,
-                  ),
-                  const SizedBox(
-                    width: 20.0,
-                    height: 64.0,
-                  ),
-                  Image.asset(
-                    'assets/images/empty-user-photo.png',
-                    width: 42.0,
-                    color: ConstColors.divider,
-                    filterQuality: FilterQuality.high,
-                  ),
-                  const SizedBox(
-                    width: 12.0,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 12.0,
-                          bottom: 2.0,
-                        ),
-                        child: Text(
-                          element['name']!,
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(.7),
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        element['workplace']!,
-                        style: TextStyle(
-                          color: Colors.black.withOpacity(.7),
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-
-    return widgets;
-  }
-
   @override
   Widget build(BuildContext context) {
     final BoxDecoration decoration = BoxDecoration(
@@ -185,412 +61,516 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: CollectionsGraph(),
                     ),
                   ),
-                  // Container(
-                  //   width: 300,
-                  //   height: 300,
-                  //   margin: const EdgeInsets.only(
-                  //       // left: 50.0,
-                  //       // top: 20.0,
-                  //       ),
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       Text(
-                  //         'Your To-do List',
-                  //         style: TextStyle(
-                  //           fontSize: 18.0,
-                  //           fontWeight: FontWeight.w600,
-                  //         ),
-                  //       ),
-                  //       SizedBox(
-                  //         height: 8.0,
-                  //       ),
-                  //       Column(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: _buildTodoItems(),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  Container(
-                    width: 362.0,
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          color: ConstColors.browseGray,
-                          height: 38.0,
-                          width: 361.0,
-                          padding: const EdgeInsets.all(
-                            10.0,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                color: ConstColors.lightDivider,
-                                child: const Text(
-                                  'Your To-do List',
-                                  style: TextStyle(
-                                    // fontSize: 17.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: _buildTodoItems(),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  TodoList(),
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 10.0,
-              ),
-              child: Text(
-                'Single Sign On',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            Container(
-              width: Values.screenWidth,
-              height: 50.0,
-              decoration: decoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  VerticalDivider(
-                    color: ConstColors.highlightGreen,
-                    width: 4.0,
-                    thickness: 4.0,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 12.0,
-                      right: 12.0,
-                      top: 7.0,
-                    ),
-                    child: Icon(
-                      Icons.info_outline,
-                      size: 22.0,
-                      color: ConstColors.highlightGreen,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 475.0,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 7.0),
-                      child: Text(
-                        'Install an app that supports Single Sign On, and your employees will be able to sign in with one click from here.',
-                        style: TextStyle(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Container(
-              width: 750,
+            Padding(
               padding: const EdgeInsets.only(
-                top: 30.0,
+                left: 110.0,
+                top: 50.0,
+                right: 400.0,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      'Hello, Dr. Saber',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 32.0,
-                      ),
+                  const Text(
+                    'Reports Overview',
+                    style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   Container(
-                    height: 160.0,
-                    width: 750,
-                    padding: const EdgeInsets.all(
-                      15.0,
+                    width: 198.0,
+                    margin: const EdgeInsets.only(
+                      top: 10.0,
+                      bottom: 14.0,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 4.0,
+                      horizontal: 12.0,
                     ),
                     decoration: BoxDecoration(
-                      color: ConstColors.lightGreen,
+                      // color: ConstColors.lightGray,
+                      // border: Border.all(
+                      //   color: ConstColors.lightDivider,
+                      // ),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(4.0),
-                      border: Border.all(
-                        color: ConstColors.divider,
-                      ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: .5,
-                          blurRadius: .5,
+                          color: Colors.grey[300]!,
+                          spreadRadius: 1,
+                          blurRadius: 1,
                           offset: const Offset(
                             0,
                             .5,
-                          ), // changes position of shadow
+                          ),
                         ),
                       ],
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          width: 500.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Introducing ReferCare Integrations',
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 8.0,
-                              ),
-                              const Text(
-                                'Four powerful new products: Unified Analytics, Role-Based Permissions, Policy Management, and Workflow Automator. Start using Workflow Automator today -- the rest will be available soon.',
-                                style: TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 15.0,
-                                ),
-                                child: Row(
-                                  children: [
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        behavior: HitTestBehavior.opaque,
-                                        onTap: () {
-                                          showDialog<void>(
-                                            context: context,
-                                            builder: (context) =>
-                                                const AlertDialog(
-                                              content: Text('Register clicked'),
-                                            ),
-                                          );
-                                        },
-                                        child: Container(
-                                          width: 147.0,
-                                          height: 30.0,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 8.0,
-                                            ),
-                                            child: Row(
-                                              children: const [
-                                                Text(
-                                                  'Register for training',
-                                                  style: TextStyle(
-                                                    fontSize: 15.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: ConstColors.navGray,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 15.0,
-                                    ),
-                                    MouseRegion(
-                                      cursor: SystemMouseCursors.click,
-                                      child: GestureDetector(
-                                        behavior: HitTestBehavior.opaque,
-                                        onTap: () {
-                                          showDialog<void>(
-                                            context: context,
-                                            builder: (context) =>
-                                                const AlertDialog(
-                                              content: Text('Try clicked'),
-                                            ),
-                                          );
-                                        },
-                                        child: Container(
-                                          width: 180.0,
-                                          height: 30.0,
-                                          decoration: BoxDecoration(
-                                            color: ConstColors.highlightGreen,
-                                            border: Border.all(
-                                              color: ConstColors.divider,
-                                            ),
-                                          ),
-                                          child: const Center(
-                                            child: Text(
-                                              'Try Workflow Automator',
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                        Text(
+                          'This month',
+                          style: TextStyle(
+                            color: Colors.grey[400],
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(
-                            top: 10.0,
-                            right: 30.0,
+                        const SizedBox(
+                          height: 25.0,
+                          width: 20.0,
+                          child: VerticalDivider(
+                            color: ConstColors.divider,
+                            width: 1.0,
+                            thickness: 1.0,
                           ),
-                          child: Icon(
-                            Icons.add_chart,
-                            size: 70.0,
-                            color: ConstColors.navGray,
+                        ),
+                        Text(
+                          'Jan 14 - Jan 21',
+                          style: TextStyle(
+                            color: Colors.black,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 25.0),
-                    child: Text(
-                      'Your To-Do List',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: _buildTodoItems(),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 15.0, bottom: 25.0),
-                    child: Text(
-                      'Apps',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                  ),
-                  const Divider(
-                    height: 1.0,
-                    color: ConstColors.divider,
-                  ),
                   Row(
-                    children: [
-                      AppItem(
-                        onClick: () {
-                          context.vRouter.to('/authenticated/app-store');
-                        },
-                        title: 'Add New App',
-                        imageName: 'assets/images/add-icon.png',
-                        imageColor: ConstColors.textGreen,
-                        imageWidth: 40.0,
-                        backgroundColor: Colors.white,
+                    children: const [
+                      Expanded(
+                        child: PatientsGraph(),
                       ),
-                      AppItem(
-                        onClick: () {
-                          context.vRouter
-                              .to('/authenticated/payroll/pay-stubs');
-                        },
-                        title: 'Payroll',
-                        imageName:
-                            'assets/images/placeholder_icons/payroll-icon-4.png',
-                        imageColor: Colors.white,
-                        imageWidth: 80.0,
+                      Expanded(
+                        child: CollectionsPerPatientGraph(),
                       ),
-                      AppItem(
-                        onClick: () {
-                          context.vRouter.to('/authenticated/reports');
-                        },
-                        title: 'Reports',
-                        imageName:
-                            'assets/images/placeholder_icons/reports-icon-2.png',
-                        imageColor: Colors.white,
-                        imageWidth: 70.0,
-                      ),
-                      AppItem(
-                        onClick: () {},
-                        title: 'HR',
-                        imageName:
-                            'assets/images/placeholder_icons/hr-icon-1.png',
-                        imageColor: Colors.white,
-                      ),
-                      AppItem(
-                        onClick: () {},
-                        title: 'Accounting',
-                        imageName:
-                            'assets/images/placeholder_icons/accounting-icon-2.png',
-                        imageColor: Colors.white,
-                        imageWidth: 70.0,
+                      Expanded(
+                        child: ReferralGraph(),
                       ),
                     ],
                   ),
-                  // ListView.builder(
-                  //   shrinkWrap: true,
-                  //   physics: const NeverScrollableScrollPhysics(),
-                  //   itemCount: _todos.length,
-                  //   itemBuilder: (BuildContext context, int index) {
-                  //     return AnimationConfiguration.staggeredList(
-                  //       position: index,
-                  //       duration: const Duration(milliseconds: 250),
-                  //       child: SlideAnimation(
-                  //         verticalOffset: 50.0,
-                  //         child: FadeInAnimation(
-                  //           child: TodoItem(
-                  //             todo: _todos[index],
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
                 ],
               ),
             ),
+            //     const Padding(
+            //       padding: EdgeInsets.symmetric(
+            //         vertical: 10.0,
+            //       ),
+            //       child: Text(
+            //         'Single Sign On',
+            //         style: TextStyle(
+            //           fontWeight: FontWeight.w600,
+            //         ),
+            //       ),
+            //     ),
+            //     Container(
+            //       width: Values.screenWidth,
+            //       height: 50.0,
+            //       decoration: decoration,
+            //       child: Row(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: const [
+            //           VerticalDivider(
+            //             color: ConstColors.highlightGreen,
+            //             width: 4.0,
+            //             thickness: 4.0,
+            //           ),
+            //           Padding(
+            //             padding: EdgeInsets.only(
+            //               left: 12.0,
+            //               right: 12.0,
+            //               top: 7.0,
+            //             ),
+            //             child: Icon(
+            //               Icons.info_outline,
+            //               size: 22.0,
+            //               color: ConstColors.highlightGreen,
+            //             ),
+            //           ),
+            //           SizedBox(
+            //             width: 475.0,
+            //             child: Padding(
+            //               padding: EdgeInsets.only(top: 7.0),
+            //               child: Text(
+            //                 'Install an app that supports Single Sign On, and your employees will be able to sign in with one click from here.',
+            //                 style: TextStyle(),
+            //               ),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // Column(
+            //   children: [
+            //     Container(
+            //       width: 750,
+            //       padding: const EdgeInsets.only(
+            //         top: 30.0,
+            //       ),
+            //       child: Column(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           const Padding(
+            //             padding: EdgeInsets.only(bottom: 20.0),
+            //             child: Text(
+            //               'Hello, Dr. Saber',
+            //               style: TextStyle(
+            //                 fontWeight: FontWeight.w700,
+            //                 fontSize: 32.0,
+            //               ),
+            //             ),
+            //           ),
+            //           Container(
+            //             height: 160.0,
+            //             width: 750,
+            //             padding: const EdgeInsets.all(
+            //               15.0,
+            //             ),
+            //             decoration: BoxDecoration(
+            //               color: ConstColors.lightGreen,
+            //               borderRadius: BorderRadius.circular(4.0),
+            //               border: Border.all(
+            //                 color: ConstColors.divider,
+            //               ),
+            //               boxShadow: [
+            //                 BoxShadow(
+            //                   color: Colors.grey.withOpacity(0.5),
+            //                   spreadRadius: .5,
+            //                   blurRadius: .5,
+            //                   offset: const Offset(
+            //                     0,
+            //                     .5,
+            //                   ), // changes position of shadow
+            //                 ),
+            //               ],
+            //             ),
+            //             child: Row(
+            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //               crossAxisAlignment: CrossAxisAlignment.start,
+            //               children: [
+            //                 SizedBox(
+            //                   width: 500.0,
+            //                   child: Column(
+            //                     crossAxisAlignment: CrossAxisAlignment.start,
+            //                     children: [
+            //                       const Text(
+            //                         'Introducing ReferCare Integrations',
+            //                         style: TextStyle(
+            //                           fontSize: 16.0,
+            //                           fontWeight: FontWeight.w600,
+            //                         ),
+            //                       ),
+            //                       const SizedBox(
+            //                         height: 8.0,
+            //                       ),
+            //                       const Text(
+            //                         'Four powerful new products: Unified Analytics, Role-Based Permissions, Policy Management, and Workflow Automator. Start using Workflow Automator today -- the rest will be available soon.',
+            //                         style: TextStyle(
+            //                           fontSize: 14.0,
+            //                           fontWeight: FontWeight.w400,
+            //                         ),
+            //                       ),
+            //                       Padding(
+            //                         padding: const EdgeInsets.only(
+            //                           top: 15.0,
+            //                         ),
+            //                         child: Row(
+            //                           children: [
+            //                             MouseRegion(
+            //                               cursor: SystemMouseCursors.click,
+            //                               child: GestureDetector(
+            //                                 behavior: HitTestBehavior.opaque,
+            //                                 onTap: () {
+            //                                   showDialog<void>(
+            //                                     context: context,
+            //                                     builder: (context) =>
+            //                                         const AlertDialog(
+            //                                       content: Text('Register clicked'),
+            //                                     ),
+            //                                   );
+            //                                 },
+            //                                 child: Container(
+            //                                   width: 147.0,
+            //                                   height: 30.0,
+            //                                   decoration: BoxDecoration(
+            //                                     color: Colors.white,
+            //                                     border: Border.all(
+            //                                       color: Colors.grey,
+            //                                     ),
+            //                                   ),
+            //                                   child: Padding(
+            //                                     padding: const EdgeInsets.symmetric(
+            //                                       horizontal: 8.0,
+            //                                     ),
+            //                                     child: Row(
+            //                                       children: const [
+            //                                         Text(
+            //                                           'Register for training',
+            //                                           style: TextStyle(
+            //                                             fontSize: 15.0,
+            //                                             fontWeight: FontWeight.w600,
+            //                                             color: ConstColors.navGray,
+            //                                           ),
+            //                                         ),
+            //                                       ],
+            //                                     ),
+            //                                   ),
+            //                                 ),
+            //                               ),
+            //                             ),
+            //                             const SizedBox(
+            //                               width: 15.0,
+            //                             ),
+            //                             MouseRegion(
+            //                               cursor: SystemMouseCursors.click,
+            //                               child: GestureDetector(
+            //                                 behavior: HitTestBehavior.opaque,
+            //                                 onTap: () {
+            //                                   showDialog<void>(
+            //                                     context: context,
+            //                                     builder: (context) =>
+            //                                         const AlertDialog(
+            //                                       content: Text('Try clicked'),
+            //                                     ),
+            //                                   );
+            //                                 },
+            //                                 child: Container(
+            //                                   width: 180.0,
+            //                                   height: 30.0,
+            //                                   decoration: BoxDecoration(
+            //                                     color: ConstColors.highlightGreen,
+            //                                     border: Border.all(
+            //                                       color: ConstColors.divider,
+            //                                     ),
+            //                                   ),
+            //                                   child: const Center(
+            //                                     child: Text(
+            //                                       'Try Workflow Automator',
+            //                                       style: TextStyle(
+            //                                         fontSize: 15.0,
+            //                                         fontWeight: FontWeight.w600,
+            //                                         color: Colors.white,
+            //                                       ),
+            //                                     ),
+            //                                   ),
+            //                                 ),
+            //                               ),
+            //                             ),
+            //                           ],
+            //                         ),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //                 const Padding(
+            //                   padding: EdgeInsets.only(
+            //                     top: 10.0,
+            //                     right: 30.0,
+            //                   ),
+            //                   child: Icon(
+            //                     Icons.add_chart,
+            //                     size: 70.0,
+            //                     color: ConstColors.navGray,
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //           const Padding(
+            //             padding: EdgeInsets.symmetric(vertical: 25.0),
+            //             child: Text(
+            //               'Your To-Do List',
+            //               style: TextStyle(
+            //                 fontWeight: FontWeight.w700,
+            //                 fontSize: 16.0,
+            //               ),
+            //             ),
+            //           ),
+            //           Column(
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: _buildTodoItems(),
+            //           ),
+            //           const Padding(
+            //             padding: EdgeInsets.only(top: 15.0, bottom: 25.0),
+            //             child: Text(
+            //               'Apps',
+            //               style: TextStyle(
+            //                 fontWeight: FontWeight.w700,
+            //                 fontSize: 16.0,
+            //               ),
+            //             ),
+            //           ),
+            //           const Divider(
+            //             height: 1.0,
+            //             color: ConstColors.divider,
+            //           ),
+            //           Row(
+            //             children: [
+            //               AppItem(
+            //                 onClick: () {
+            //                   context.vRouter.to('/authenticated/app-store');
+            //                 },
+            //                 title: 'Add New App',
+            //                 imageName: 'assets/images/add-icon.png',
+            //                 imageColor: ConstColors.textGreen,
+            //                 imageWidth: 40.0,
+            //                 backgroundColor: Colors.white,
+            //               ),
+            //               AppItem(
+            //                 onClick: () {
+            //                   context.vRouter
+            //                       .to('/authenticated/payroll/pay-stubs');
+            //                 },
+            //                 title: 'Payroll',
+            //                 imageName:
+            //                     'assets/images/placeholder_icons/payroll-icon-4.png',
+            //                 imageColor: Colors.white,
+            //                 imageWidth: 80.0,
+            //               ),
+            //               AppItem(
+            //                 onClick: () {
+            //                   context.vRouter.to('/authenticated/reports');
+            //                 },
+            //                 title: 'Reports',
+            //                 imageName:
+            //                     'assets/images/placeholder_icons/reports-icon-2.png',
+            //                 imageColor: Colors.white,
+            //                 imageWidth: 70.0,
+            //               ),
+            //               AppItem(
+            //                 onClick: () {},
+            //                 title: 'HR',
+            //                 imageName:
+            //                     'assets/images/placeholder_icons/hr-icon-1.png',
+            //                 imageColor: Colors.white,
+            //               ),
+            //               AppItem(
+            //                 onClick: () {},
+            //                 title: 'Accounting',
+            //                 imageName:
+            //                     'assets/images/placeholder_icons/accounting-icon-2.png',
+            //                 imageColor: Colors.white,
+            //                 imageWidth: 70.0,
+            //               ),
+            //             ],
+            //           ),
+            // ListView.builder(
+            //   shrinkWrap: true,
+            //   physics: const NeverScrollableScrollPhysics(),
+            //   itemCount: _todos.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return AnimationConfiguration.staggeredList(
+            //       position: index,
+            //       duration: const Duration(milliseconds: 250),
+            //       child: SlideAnimation(
+            //         verticalOffset: 50.0,
+            //         child: FadeInAnimation(
+            //           child: TodoItem(
+            //             todo: _todos[index],
+            //           ),
+            //         ),
+            //       ),
+            //     );
+            //   },
+            // ),
+            // ],
+            // ),
+            // ),
           ],
         ),
         // const SizedBox(
         //   height: 100.0,
         // ),
       ],
+    );
+  }
+}
+
+class TodoList extends StatelessWidget {
+  TodoList({
+    Key? key,
+  }) : super(key: key);
+
+  final List<Todo> _todos = [
+    Todo(
+      text:
+          '[Brentwood Endodontics] Missing Tax Agency Account Number - Potential fees of \$200',
+      completed: false,
+      created: DateTime.now(),
+    ),
+    Todo(
+      text:
+          '[Action Required] Sign Business Associate Agreement with ReferCare',
+      completed: false,
+      created: DateTime.now(),
+    ),
+    Todo(
+      text:
+          '[Action Required] Employee Stacey Anderson missing payroll information',
+      completed: false,
+      created: DateTime.now(),
+    ),
+  ];
+
+  List<Widget> _buildTodoItems() {
+    final List<Widget> widgets = [];
+
+    for (final todo in _todos) {
+      widgets.add(
+        TodoItem(todo: todo),
+      );
+    }
+
+    return widgets;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 362.0,
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            color: ConstColors.browseGray,
+            height: 38.0,
+            width: 361.0,
+            padding: const EdgeInsets.all(
+              10.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  color: ConstColors.lightDivider,
+                  child: const Text(
+                    'Your To-do List',
+                    style: TextStyle(
+                      // fontSize: 17.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 8.0,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: _buildTodoItems(),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
