@@ -206,6 +206,13 @@ class Values {
     // },
     {
       'isNullRoute': false,
+      'routeName': 'billing',
+      'title': 'Billing',
+      'widget': HRScreen,
+      'secondaryRouteName': '',
+    },
+    {
+      'isNullRoute': false,
       'routeName': 'payroll',
       'title': 'Payroll',
       'widget': PayrollScreen,

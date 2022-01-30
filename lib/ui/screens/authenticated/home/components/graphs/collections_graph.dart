@@ -430,7 +430,7 @@ class CollectionsGraphState extends State<CollectionsGraph> {
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

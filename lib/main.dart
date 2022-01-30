@@ -134,6 +134,10 @@ class ReferCare extends StatelessWidget {
                               path: 'home',
                               widget: const HomeScreen(),
                             ),
+                            VWidget(
+                              path: 'Billing',
+                              widget: const HRScreen(),
+                            ),
                             VNester(
                               path: 'payroll',
                               widgetBuilder: (child) {

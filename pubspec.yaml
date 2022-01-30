@@ -68,6 +68,7 @@ flutter:
     - assets/images/profile/
     - assets/images/placeholder_icons/
     - assets/images/logos/
+    - assets/images/onboarding/
 
   fonts:
     - family: SourceSerifPro

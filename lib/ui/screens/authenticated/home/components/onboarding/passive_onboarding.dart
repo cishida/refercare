@@ -17,11 +17,11 @@ class PassiveOnboarding extends StatelessWidget {
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 5,
-          blurRadius: 7,
+          spreadRadius: .5,
+          blurRadius: 1,
           offset: const Offset(
             0,
-            2,
+            -2,
           ),
         ),
       ],
@@ -31,7 +31,7 @@ class PassiveOnboarding extends StatelessWidget {
       children: [
         const PassiveOnboardingHeader(),
         Container(
-          height: 350.0,
+          height: 349.0,
           color: ConstColors.lightGreen,
           child: Padding(
             padding: const EdgeInsets.only(left: 33.0),
@@ -85,12 +85,115 @@ class PassiveOnboarding extends StatelessWidget {
                             titleBackgroundColor: Color(0xFF99E7FC),
                           ),
                           const SizedBox(
-                            height: 23.0,
+                            height: 15.0,
                           ),
                           Container(
-                            height: 190,
-                            width: 249.0,
+                            height: 197,
+                            width: 270.0,
                             decoration: shadowDecoration,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Row(
+                                    children: const [
+                                      Text(
+                                        '🎓',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      Text(
+                                        'MEDICAL TRAINING',
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xFF1443E8),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const Divider(
+                                  height: 1.0,
+                                  color: ConstColors.lightDivider,
+                                ),
+                                const Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 40.0, top: 5.0),
+                                  child: Text(
+                                    'USC Herman Ostrow School of Dentistry',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 40.0,
+                                    bottom: 10.0,
+                                  ),
+                                  child: Text(
+                                    "DDS '10",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w400,
+                                      color: ConstColors.navGray,
+                                    ),
+                                  ),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 40.0),
+                                  child: Text(
+                                    'Stanford University',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 40.0),
+                                  child: Text(
+                                    "BA '06",
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w400,
+                                      color: ConstColors.navGray,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Row(
+                                    children: const [
+                                      Text(
+                                        '📇',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      Text(
+                                        'WORK HISTORY',
+                                        style: TextStyle(
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w700,
+                                          color: Color(0xFF1443E8),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -98,18 +201,21 @@ class PassiveOnboarding extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const OnboardingStepHeader(
-                            title: 'NETWORK',
-                            subtitle: 'Connect with your colleagues',
+                            title: 'PAYROLL',
+                            subtitle: 'Control benefits & compensation',
                             titleColor: Color(0xFF6E31EF),
                             titleBackgroundColor: Color(0xFFE7DBFC),
                           ),
                           const SizedBox(
-                            height: 23.0,
+                            height: 15.0,
                           ),
                           Container(
-                            height: 190,
-                            width: 249.0,
+                            height: 197,
+                            width: 256.0,
                             decoration: shadowDecoration,
+                            child: Image.asset(
+                              'assets/images/onboarding/payroll.png',
+                            ),
                           ),
                         ],
                       ),
@@ -117,39 +223,109 @@ class PassiveOnboarding extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const OnboardingStepHeader(
-                            title: 'PERFORMANCE',
-                            subtitle: 'Measure outcomes & compensation',
+                            title: 'HR',
+                            subtitle: 'Organize your staff',
                             titleColor: Color(0xFF2653C7),
                             titleBackgroundColor: Color(0xFFB3D9FC),
                           ),
                           const SizedBox(
-                            height: 23.0,
+                            height: 15.0,
                           ),
                           Container(
-                            height: 190,
-                            width: 249.0,
-                            decoration: shadowDecoration,
+                            height: 197,
+                            width: 256.0,
+                            // decoration: shadowDecoration,
+                            child: Wrap(
+                              children: const [
+                                HRStaffItem(
+                                  name: 'Nicholas Wong',
+                                  title: 'Dental Hygienist',
+                                  image:
+                                      'assets/images/onboarding/nicholas.png',
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 10.0,
+                                    bottom: 10.0,
+                                  ),
+                                  child: HRStaffItem(
+                                    name: 'Rebecca Everley',
+                                    title: 'Office Manager',
+                                    image:
+                                        'assets/images/onboarding/rebecca.png',
+                                  ),
+                                ),
+                                HRStaffItem(
+                                  name: 'Mark Brafka',
+                                  title: 'Dental Assistant',
+                                  image: 'assets/images/onboarding/mark.png',
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const OnboardingStepHeader(
-                            title: 'MESSAGES',
-                            subtitle: 'Send secure messages',
-                            titleColor: Color(0xFF428124),
-                            titleBackgroundColor: Color(0xFFCCF0E8),
-                          ),
-                          const SizedBox(
-                            height: 23.0,
-                          ),
-                          Container(
-                            height: 190,
-                            width: 249.0,
-                            decoration: shadowDecoration,
-                          ),
-                        ],
+                      Container(
+                        height: 70.0,
+                        width: 420.0,
+                        margin: const EdgeInsets.only(bottom: 40.0),
+                        padding: const EdgeInsets.all(12.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: .5,
+                              blurRadius: 4,
+                              offset: const Offset(
+                                0,
+                                2,
+                              ),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: const [
+                                    Icon(
+                                      Icons.help_outline_rounded,
+                                      size: 16.0,
+                                    ),
+                                    SizedBox(
+                                      width: 5.0,
+                                    ),
+                                    Text(
+                                      'Not sure where to start?',
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 6.0),
+                                const Text(
+                                  'Get personalized recommendations to set up ReferCare',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            const Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 15.0,
+                              color: ConstColors.navGray,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -159,6 +335,84 @@ class PassiveOnboarding extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class HRStaffItem extends StatelessWidget {
+  const HRStaffItem(
+      {Key? key, required this.name, required this.title, required this.image})
+      : super(key: key);
+
+  final String name;
+  final String title;
+  final String image;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        // border:
+        //     Border.all(color: ConstColors.divider),
+        borderRadius: BorderRadius.circular(4.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: .5,
+            blurRadius: 4,
+            offset: const Offset(
+              0,
+              2,
+            ),
+          ),
+        ],
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            const SizedBox(
+              width: 12.0,
+              height: 64.0,
+            ),
+            Image.asset(
+              image,
+              width: 42.0,
+              filterQuality: FilterQuality.high,
+            ),
+            const SizedBox(
+              width: 12.0,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 12.0,
+                    bottom: 2.0,
+                  ),
+                  child: Text(
+                    name,
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(.7),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(.7),
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -187,7 +441,7 @@ class PassiveOnboardingHeader extends StatelessWidget {
                 Row(
                   children: [
                     const Text(
-                      'Your account is now active',
+                      'Account successfully upgraded',
                       style: TextStyle(
                         color: ConstColors.textGreen,
                         fontSize: 24.0,
@@ -204,7 +458,7 @@ class PassiveOnboardingHeader extends StatelessWidget {
                   ],
                 ),
                 const Text(
-                  'Start making connections to get the most out of ReferCare.',
+                  'Browse the App Shop for integrations to get the most out of ReferCare.',
                   style: TextStyle(
                     color: ConstColors.textGreen,
                     fontSize: 18.0,
@@ -291,13 +545,25 @@ class OnboardingStepHeader extends StatelessWidget {
         const SizedBox(
           height: 5.0,
         ),
-        const Text(
-          'Start',
-          style: TextStyle(
-            color: ConstColors.textGreen,
-            fontSize: 14.0,
-            fontWeight: FontWeight.w600,
-          ),
+        Row(
+          children: const [
+            Text(
+              'Start',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 14.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 2.0),
+              child: Icon(
+                Icons.arrow_forward,
+                color: Colors.blue,
+                size: 15.0,
+              ),
+            ),
+          ],
         ),
       ],
     );

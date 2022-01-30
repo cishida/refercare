@@ -480,9 +480,9 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
           ],
         ),
-        // const SizedBox(
-        //   height: 100.0,
-        // ),
+        const SizedBox(
+          height: 300.0,
+        ),
       ],
     );
   }
