@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
 import 'package:refercare/core/_constants/_values.dart';
@@ -27,25 +29,31 @@ class NavRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ConstColors.backgroundColor,
+      color: Colors.transparent,
+      height: Values.navHeight,
       child: Column(
         children: [
           SizedBox(
             width: Values.screenWidth,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 8.0,
-                    bottom: 10.0,
-                    left: Values.screenMargin,
-                  ),
-                  child: Row(
-                    children: _buildNavItems(),
-                  ),
+            child: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        top: 8.0,
+                        bottom: 10.0,
+                        left: Values.screenMargin,
+                      ),
+                      child: Row(
+                        children: _buildNavItems(),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           const Divider(

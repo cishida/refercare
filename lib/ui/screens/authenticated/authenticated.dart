@@ -16,21 +16,27 @@ class Authenticated extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ConstColors.backgroundColor,
-      body: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Column(
-              children: <Widget>[
-                const AuthenticatedHeader(),
-                const NavRow(),
-                Expanded(
-                  child: SizedBox(
-                    // width: Values.screenWidth,
-                    child: child,
-                  ),
+      // extendBody: true,
+      body: Column(
+        children: [
+          const AuthenticatedHeader(),
+          Expanded(
+            child: Stack(
+              children: [
+                CustomScrollView(
+                  slivers: [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: Values.homeHeaderHeight,
+                        ),
+                        child: child,
+                      ),
+                    ),
+                  ],
                 ),
-                // const Text('Footer'),
+                const NavRow(),
               ],
             ),
           ),

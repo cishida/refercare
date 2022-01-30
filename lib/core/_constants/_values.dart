@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:refercare/ui/screens/authenticated/accounting/accounting_screen.dart';
 import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
+import 'package:refercare/ui/screens/authenticated/hr/hr_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
 import 'package:refercare/ui/screens/authenticated/profile/profile_screen.dart';
 import 'package:refercare/ui/screens/authenticated/reports/reports_screen.dart';
@@ -10,6 +12,7 @@ class Values {
   // UI
   static const double screenWidth = 1550.0;
   static const double screenMargin = 50.0;
+  static const double navHeight = 45.0;
   static const double totalsWidth = 300;
   static const double homeHeaderHeight = 55.0;
 
@@ -96,26 +99,40 @@ class Values {
       'widget': HomeScreen,
       'secondaryRouteName': '',
     },
-    {
-      'isNullRoute': true,
-      'routeName': 'network',
-      'title': 'Network',
-      'widget': NetworkScreen,
-      'secondaryRouteName': '',
-    },
-    {
-      'isNullRoute': true,
-      'routeName': 'profile',
-      'title': 'Profile',
-      'widget': ProfileScreen,
-      'secondaryRouteName': '',
-    },
+    // {
+    //   'isNullRoute': true,
+    //   'routeName': 'network',
+    //   'title': 'Network',
+    //   'widget': NetworkScreen,
+    //   'secondaryRouteName': '',
+    // },
+    // {
+    //   'isNullRoute': true,
+    //   'routeName': 'profile',
+    //   'title': 'Profile',
+    //   'widget': ProfileScreen,
+    //   'secondaryRouteName': '',
+    // },
     {
       'isNullRoute': false,
       'routeName': 'payroll',
       'title': 'Payroll',
       'widget': PayrollScreen,
       'secondaryRouteName': '/pay-stubs',
+    },
+    {
+      'isNullRoute': false,
+      'routeName': 'hr',
+      'title': 'HR',
+      'widget': HRScreen,
+      'secondaryRouteName': '',
+    },
+    {
+      'isNullRoute': false,
+      'routeName': 'accounting',
+      'title': 'Accounting',
+      'widget': AccountingScreen,
+      'secondaryRouteName': '',
     },
     {
       'isNullRoute': false,
@@ -126,8 +143,8 @@ class Values {
     },
     {
       'isNullRoute': false,
-      'routeName': 'app-store',
-      'title': 'App Store',
+      'routeName': 'integrations',
+      'title': 'Integrations',
       'widget': AppStoreScreen,
       'secondaryRouteName': '',
     },

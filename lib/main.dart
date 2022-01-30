@@ -6,10 +6,12 @@ import 'package:refercare/core/services/auth/firebase_auth_service.dart';
 import 'package:refercare/theme.dart';
 import 'package:refercare/ui/screens/auth/auth_widget.dart';
 import 'package:refercare/ui/screens/auth/auth_widget_builder.dart';
+import 'package:refercare/ui/screens/authenticated/accounting/accounting_screen.dart';
 import 'package:refercare/ui/screens/authenticated/app/app_screen.dart';
 import 'package:refercare/ui/screens/authenticated/app_store/app_store_screen.dart';
 import 'package:refercare/ui/screens/authenticated/authenticated.dart';
 import 'package:refercare/ui/screens/authenticated/home/home_screen.dart';
+import 'package:refercare/ui/screens/authenticated/hr/hr_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/pay_stubs/pay_stubs_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/components/w2s/w2s_screen.dart';
 import 'package:refercare/ui/screens/authenticated/payroll/payroll_screen.dart';
@@ -119,14 +121,14 @@ class ReferCare extends StatelessWidget {
                               path: null,
                               widget: const HomeScreen(),
                             ),
-                            VWidget(
-                              path: 'network',
-                              widget: const NetworkScreen(),
-                            ),
-                            VWidget(
-                              path: 'profile',
-                              widget: const ProfileScreen(),
-                            ),
+                            // VWidget(
+                            //   path: 'network',
+                            //   widget: const NetworkScreen(),
+                            // ),
+                            // VWidget(
+                            //   path: 'profile',
+                            //   widget: const ProfileScreen(),
+                            // ),
                             VWidget(
                               path: 'home',
                               widget: const HomeScreen(),
@@ -166,15 +168,23 @@ class ReferCare extends StatelessWidget {
                               ],
                             ),
                             VWidget(
+                              path: 'hr',
+                              widget: const HRScreen(),
+                            ),
+                            VWidget(
+                              path: 'accounting',
+                              widget: const AccountingScreen(),
+                            ),
+                            VWidget(
                               path: 'reports',
                               widget: const ReportsScreen(),
                             ),
+                            // VWidget(
+                            //   path: 'integrations',
+                            //   widget: const AppStoreScreen(),
+                            // ),
                             VWidget(
-                              path: 'app-store',
-                              widget: const AppStoreScreen(),
-                            ),
-                            VWidget(
-                              path: 'app-store',
+                              path: 'integrations',
                               widget: const AppStoreScreen(),
                               stackedRoutes: [
                                 VWidget(
