@@ -250,9 +250,9 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 18.0,
-              ),
+              // const SizedBox(
+              //   height: 18.0,
+              // ),
               // OutlinedButton(
               //   onPressed: () {
               //     showDialog<void>(
@@ -397,13 +397,13 @@ class _IntegrationsScreenState extends State<IntegrationsScreen> {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 25.0,
                       bottom: 20.0,
                     ),
                     child: Text(
                       _selectedNavItem.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: ConstColors.textGreen,
                         fontSize: 32.0,
                         fontWeight: FontWeight.w700,
@@ -501,7 +501,7 @@ class IntegrationsItem extends StatelessWidget {
   final int starCount;
 
   List<Icon> _icons = [
-    Icon(
+    const Icon(
       Icons.lightbulb_outline,
       color: ConstColors.highlightGreen,
     ),
@@ -509,7 +509,7 @@ class IntegrationsItem extends StatelessWidget {
       Icons.bolt_outlined,
       color: Colors.yellow[900],
     ),
-    Icon(
+    const Icon(
       Icons.connect_without_contact_outlined,
       color: Colors.blue,
     ),
@@ -550,99 +550,99 @@ class IntegrationsItem extends StatelessWidget {
           color: ConstColors.divider,
         ),
       ),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () {
-            context.vRouter.to(
-              '/authenticated/integrations/${title.replaceAll(' ', '-').toLowerCase()}',
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
+      child: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                    border: Border.all(
+                      color: ConstColors.lightDivider,
+                    ),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: SizedBox.fromSize(
+                      size: const Size.fromRadius(50), // Image radius
+                      child: Padding(
+                        padding: padding,
+                        child: Image.asset(
+                          imageName,
+                          width: 100,
+                          height: 100,
+                          fit: fit,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20.0),
-                        border: Border.all(
-                          color: ConstColors.lightDivider,
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: SizedBox.fromSize(
-                          size: const Size.fromRadius(50), // Image radius
-                          child: Padding(
-                            padding: padding,
-                            child: Image.asset(
-                              imageName,
-                              width: 100,
-                              height: 100,
-                              fit: fit,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: _buildFeatures(),
-                    ),
-                  ],
+                  children: _buildFeatures(),
                 ),
-                const SizedBox(
-                  height: 12.0,
-                ),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8.0,
-                ),
-                FiveStars(
-                  count: starCount,
-                ),
-                SizedBox(height: 15.0),
-                Text(
-                  category,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(
-                  height: 4.0,
-                ),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Spacer(),
-                Text(
+              ],
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            FiveStars(
+              count: starCount,
+            ),
+            const SizedBox(height: 15.0),
+            Text(
+              category,
+              style: const TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(
+              height: 4.0,
+            ),
+            Text(
+              description,
+              style: const TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            const Spacer(),
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  context.vRouter.to(
+                    '/authenticated/integrations/${title.replaceAll(' ', '-').toLowerCase()}',
+                  );
+                },
+                child: const Text(
                   'Learn more',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.w400,
                     color: Colors.blue,
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
