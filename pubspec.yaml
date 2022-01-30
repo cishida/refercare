@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_flip_counter: ^0.2.2
   cupertino_icons: ^1.0.2
   dash_chat: ^1.1.16
   firebase_auth: ^3.2.0

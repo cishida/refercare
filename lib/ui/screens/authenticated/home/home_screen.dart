@@ -26,12 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     Todo(
       text:
-          '[Action Required] Set up payroll deductions for Brentwood Endodontics.',
+          '[Action Required] Sign Business Associate Agreement with ReferCare',
       completed: false,
       created: DateTime.now(),
     ),
     Todo(
-      text: 'ReferCare Onboarding Flow',
+      text:
+          '[Action Required] Employee Stacey Anderson missing payroll information',
       completed: false,
       created: DateTime.now(),
     ),
@@ -43,6 +44,100 @@ class _HomeScreenState extends State<HomeScreen> {
     for (final todo in _todos) {
       widgets.add(
         TodoItem(todo: todo),
+      );
+    }
+
+    return widgets;
+  }
+
+  final List<Map<String, String>> _recommendedProfiles = [
+    {
+      'name': 'Nicholas Wong, DDS',
+      'workplace': 'General Dentist at Santa Monica Dental Partners',
+    },
+    {
+      'name': 'Dr. Mark Brafka',
+      'workplace': 'General Dentist at Santa Monica Dental Partners',
+    },
+    {
+      'name': 'Sarah Powell',
+      'workplace': 'General Dentist at Santa Monica Dental Partners',
+    },
+    {
+      'name': 'Mischa Foster',
+      'workplace': 'General Dentist at Santa Monica Dental Partners',
+    },
+  ];
+
+  List<Widget> _buildRecommendedProfiles() {
+    final List<Widget> widgets = [];
+
+    for (final element in _recommendedProfiles) {
+      widgets.add(
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              showDialog<void>(
+                context: context,
+                builder: (context) => const AlertDialog(
+                  content: Text('Recommended profile clicked'),
+                ),
+              );
+            },
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  const VerticalDivider(
+                    width: 1.0,
+                    color: ConstColors.divider,
+                  ),
+                  const SizedBox(
+                    width: 20.0,
+                    height: 64.0,
+                  ),
+                  Image.asset(
+                    'assets/images/empty-user-photo.png',
+                    width: 42.0,
+                    color: ConstColors.divider,
+                    filterQuality: FilterQuality.high,
+                  ),
+                  const SizedBox(
+                    width: 12.0,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 12.0,
+                          bottom: 2.0,
+                        ),
+                        child: Text(
+                          element['name']!,
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(.7),
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        element['workplace']!,
+                        style: TextStyle(
+                          color: Colors.black.withOpacity(.7),
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       );
     }
 
@@ -70,23 +165,96 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const PassiveOnboarding(),
+            const SizedBox(
+              width: Values.screenWidth,
+              child: PassiveOnboarding(),
+            ),
             Padding(
-              padding: EdgeInsets.only(
-                top: 50.0,
-                bottom: 50.0,
+              padding: const EdgeInsets.only(
+                left: 110.0,
+                top: 40.0,
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    color: Colors.red,
-                    width: 300,
-                    height: 300,
+                  const Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 50.0),
+                      child: CollectionsGraph(),
+                    ),
                   ),
-                  Expanded(
-                    child: CollectionsGraph(),
+                  // Container(
+                  //   width: 300,
+                  //   height: 300,
+                  //   margin: const EdgeInsets.only(
+                  //       // left: 50.0,
+                  //       // top: 20.0,
+                  //       ),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       Text(
+                  //         'Your To-do List',
+                  //         style: TextStyle(
+                  //           fontSize: 18.0,
+                  //           fontWeight: FontWeight.w600,
+                  //         ),
+                  //       ),
+                  //       SizedBox(
+                  //         height: 8.0,
+                  //       ),
+                  //       Column(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: _buildTodoItems(),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  Container(
+                    width: 362.0,
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          color: ConstColors.browseGray,
+                          height: 38.0,
+                          width: 361.0,
+                          padding: const EdgeInsets.all(
+                            10.0,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                color: ConstColors.lightDivider,
+                                child: const Text(
+                                  'Your To-do List',
+                                  style: TextStyle(
+                                    // fontSize: 17.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: _buildTodoItems(),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -520,7 +688,7 @@ class _TodoItemState extends State<TodoItem> {
   Widget build(BuildContext context) {
     return Container(
       // color: ConstColors.lightGreen,
-      margin: const EdgeInsets.only(bottom: 15.0),
+      margin: const EdgeInsets.only(bottom: 5.0),
       child: CheckboxListTile(
         tileColor: Colors.white,
         checkColor: Colors.white,
@@ -533,8 +701,9 @@ class _TodoItemState extends State<TodoItem> {
         title: Text(
           widget.todo.text!,
           style: const TextStyle(
-            fontSize: 14.0,
+            fontSize: 15.0,
             fontWeight: FontWeight.w600,
+            color: Colors.black,
           ),
         ),
         value: _checkedValue,

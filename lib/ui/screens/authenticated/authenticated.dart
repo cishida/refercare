@@ -26,7 +26,7 @@ class Authenticated extends StatelessWidget {
                 const NavRow(),
                 Expanded(
                   child: SizedBox(
-                    width: Values.screenWidth,
+                    // width: Values.screenWidth,
                     child: child,
                   ),
                 ),

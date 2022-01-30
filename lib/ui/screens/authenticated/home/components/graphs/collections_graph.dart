@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:math';
 
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:refercare/core/_constants/_colors.dart';
@@ -173,216 +175,241 @@ class CollectionsGraph extends StatefulWidget {
 
 class CollectionsGraphState extends State<CollectionsGraph> {
   late bool isShowingMainData;
+  double _collectionsTotal = 127432.58;
+  late Timer _timer;
 
   @override
   void initState() {
     super.initState();
     isShowingMainData = true;
+    // defines a timer
+    _timer = Timer.periodic(Duration(seconds: 3), (Timer t) {
+      setState(() {
+        _collectionsTotal += 253.67;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 50.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'This Month',
-            style: TextStyle(
-              fontSize: 28.0,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          SizedBox(
-            height: 250.0,
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      border: Border(
-                        top: BorderSide(color: ConstColors.divider),
-                        right: BorderSide(color: ConstColors.divider),
-                        bottom: BorderSide(color: ConstColors.divider),
-                      ),
-                    ),
-                    child: Stack(
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Expanded(
-                              child: LineChartSample7(),
-                            ),
-                          ],
-                        ),
-                      ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 250.0,
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    border: Border(
+                      top: BorderSide(color: ConstColors.divider),
+                      right: BorderSide(color: ConstColors.divider),
+                      bottom: BorderSide(color: ConstColors.divider),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: Values.totalsWidth,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.only(
-                            top: 18.0,
-                            left: 20.0,
-                          ),
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              top: BorderSide(
-                                color: ConstColors.divider,
-                              ),
-                              bottom: BorderSide(
-                                color: ConstColors.divider,
-                              ),
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: const [
-                                  Text(
-                                    'Collections',
-                                    style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    'View details',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.blue,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 4.0,
-                              ),
-                              const Text(
-                                '\$127,432.58',
-                                style: TextStyle(
-                                  fontSize: 28.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: ConstColors.textGreen,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 8.0,
-                              ),
-                              Container(
-                                color: Colors.green[300]!.withOpacity(.3),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 4.0,
-                                  vertical: 2.0,
-                                ),
-                                child: Text(
-                                  '+3.2%',
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.green[700],
-                                  ),
-                                ),
-                              ),
-                              // Text('Estimated future billing'),
-                            ],
+                  child: Stack(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 8.0,
+                          left: 8.0,
+                        ),
+                        child: const Text(
+                          'Gross Collection Volume',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.only(
-                            top: 18.0,
-                            left: 20.0,
+                      Column(
+                        // crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Expanded(
+                            child: LineChartSample7(),
                           ),
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: ConstColors.divider,
-                              ),
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: const [
-                                  Text(
-                                    'Expected Today',
-                                    style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  // Text(
-                                  //   'View details',
-                                  //   style: TextStyle(
-                                  //     fontSize: 16.0,
-                                  //     fontWeight: FontWeight.w400,
-                                  //     color: Colors.blue,
-                                  //   ),
-                                  // ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 4.0,
-                              ),
-                              const Text(
-                                '\$4,587',
-                                style: TextStyle(
-                                  fontSize: 28.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: ConstColors.textGreen,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 8.0,
-                              ),
-                              Container(
-                                color: Colors.green[300]!.withOpacity(.3),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 4.0,
-                                  vertical: 2.0,
-                                ),
-                                child: Text(
-                                  '+0.2%',
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.green[700],
-                                  ),
-                                ),
-                              ),
-                              // Text('Estimated future billing'),
-                            ],
-                          ),
-                        ),
-                      )
+                        ],
+                      ),
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                width: Values.totalsWidth,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.only(
+                          top: 18.0,
+                          left: 20.0,
+                          right: 20.0,
+                        ),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            top: BorderSide(
+                              color: ConstColors.divider,
+                            ),
+                            bottom: BorderSide(
+                              color: ConstColors.divider,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text(
+                                  'Collections',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  'View details',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 4.0,
+                            ),
+                            AnimatedFlipCounter(
+                              fractionDigits: 2,
+                              thousandSeparator: ',',
+                              value: _collectionsTotal,
+                              textStyle: const TextStyle(
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.w600,
+                                color: ConstColors.textGreen,
+                              ),
+                            ),
+                            // Text(
+                            //   '\$${_collectionsTotal.toString()}',
+                            //   style: TextStyle(
+                            //     fontSize: 28.0,
+                            //     fontWeight: FontWeight.w600,
+                            //     color: ConstColors.textGreen,
+                            //   ),
+                            // ),
+                            const SizedBox(
+                              height: 8.0,
+                            ),
+                            Container(
+                              color: Colors.green[300]!.withOpacity(.3),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 4.0,
+                                vertical: 2.0,
+                              ),
+                              child: Text(
+                                '+3.2%',
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.green[700],
+                                ),
+                              ),
+                            ),
+                            // Text('Estimated future billing'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.only(
+                          top: 18.0,
+                          left: 20.0,
+                        ),
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: ConstColors.divider,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                Text(
+                                  'Expected Today',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                // Text(
+                                //   'View details',
+                                //   style: TextStyle(
+                                //     fontSize: 16.0,
+                                //     fontWeight: FontWeight.w400,
+                                //     color: Colors.blue,
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 4.0,
+                            ),
+                            const Text(
+                              '\$4,587.32',
+                              style: TextStyle(
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.w600,
+                                color: ConstColors.textGreen,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 8.0,
+                            ),
+                            Container(
+                              color: Colors.red[300]!.withOpacity(.3),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 4.0,
+                                vertical: 2.0,
+                              ),
+                              child: Text(
+                                '-0.2%',
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.red[700],
+                                ),
+                              ),
+                            ),
+                            // Text('Estimated future billing'),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
