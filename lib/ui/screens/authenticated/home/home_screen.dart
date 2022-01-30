@@ -73,10 +73,23 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const PassiveOnboarding(),
-            SizedBox(
-              width: 500.0,
-              height: 300.0,
-              child: const CollectionsGraph(),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 50.0,
+                bottom: 50.0,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    color: Colors.red,
+                    width: 300,
+                    height: 300,
+                  ),
+                  Expanded(
+                    child: CollectionsGraph(),
+                  ),
+                ],
+              ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(

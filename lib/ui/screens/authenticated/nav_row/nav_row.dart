@@ -39,7 +39,7 @@ class NavRow extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     top: 8.0,
                     bottom: 10.0,
-                    left: 50.0,
+                    left: Values.screenMargin,
                   ),
                   child: Row(
                     children: _buildNavItems(),

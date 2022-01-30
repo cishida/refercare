@@ -21,8 +21,9 @@ class AuthenticatedHeader extends StatelessWidget {
           ),
           Container(
             width: Values.screenWidth,
-            margin: const EdgeInsets.only(
-              left: 50.0,
+            padding: const EdgeInsets.only(
+              left: Values.screenMargin,
+              right: Values.screenMargin,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -223,9 +224,6 @@ class AuthenticatedHeader extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 50.0,
                     ),
                   ],
                 ),

@@ -8,7 +8,9 @@ import 'package:refercare/ui/screens/network/network_screen.dart';
 
 class Values {
   // UI
-  static const double screenWidth = 1400.0;
+  static const double screenWidth = 1550.0;
+  static const double screenMargin = 50.0;
+  static const double totalsWidth = 300;
   static const double homeHeaderHeight = 55.0;
 
   static const Map<String, Map<String, dynamic>> placeholderAppInfos = {
